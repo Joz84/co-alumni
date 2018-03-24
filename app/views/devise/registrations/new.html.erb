@@ -13,7 +13,7 @@
           <%= f.input :password_confirmation, required: true, label: "confirmer le mot de passe" %>
           <div class="form-actions">
             <%= f.button :submit, "s'enregistrer", class:"margin-bottom-small" %>
-            <p class="text-center"><%= link_to t('.addon'), new_user_session_path %></p>
+            <p class="text-center"><%= link_to "se connecter", new_user_session_path %></p>
           </div>
         </div>
       <% end %>
