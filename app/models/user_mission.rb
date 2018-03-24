@@ -1,6 +1,14 @@
 class UserMission < ApplicationRecord
   belongs_to :user
-  # belongs_to :mission
-  belongs_to :my_mission, class_name: "Mission", foreign_key: 'mission_id'
-  enum status: { to_be_done: 0, in_progress: 1, done: 2}
+  belongs_to :mission
+
+  enum status: { booked: 0, done: 1, canceled: 2 }
+
+  after_update :handle_points, if: ->(u) { u.changed? && u.done? }
+
+  private
+
+  def handle_points
+    binding.pry
+  end
 end
