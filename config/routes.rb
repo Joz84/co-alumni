@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   namespace :supervisor do
     resources :users, only: %I[show], path: :dashboard, as: :dashboard
   end
+
+  namespace :leaderboard do
+    
+  end
 end
