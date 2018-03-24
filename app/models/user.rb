@@ -30,6 +30,10 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.upcase}"
   end
 
+  def own_missions_by(status)
+    own_missions.where(status: status)
+  end
+
   private
 
   def generate_token

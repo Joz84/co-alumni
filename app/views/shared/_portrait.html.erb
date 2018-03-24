@@ -3,5 +3,8 @@
     <div class="photo" style="background-image:url('<%= photo %>');"></div>
     <h4><%= name %></h4>
     <h6 class="subtalent"><%= statut %></h6>
+    <%= link_to coordinator_dashboard_path(coordinator) do %>
+      <h6 class="subtalent water-green"><%= "coordinator : " + coordinator.first_name + " " + coordinator.last_name %></h6>
+    <% end %>
   </div>
 </div>
