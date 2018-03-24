@@ -1,0 +1,60 @@
+.capsule {
+  position: relative;
+  width: 100%;
+  height: 115px;
+  display: flex;
+  align-items: center;
+  padding: 25px 25px 25px 40px;
+  margin: 25px 0 25px 0;
+  border-radius: 100px;
+  background-color: white;
+  // box-shadow: $shadow;
+  text-transform: uppercase;
+  text-align: left;
+  .talent {
+    font-weight: bold;
+  }
+  .subtalent {
+    // color: $medium-gray;
+    margin-top: 6px;
+  }
+  &.clickable {
+    -webkit-transition: 0.1s ease-in-out;
+        -moz-transition: 0.1s ease-in-out;
+        -o-transition: 0.1s ease-in-out;
+    &:hover {
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+  }
+}
+.capsule-text {
+  width: 70%;
+}
+.capsule-badge {
+  width: 85px;
+  height: 85px;
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  border-radius: 50%;
+  color:white;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.capsule-badge-link {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 79px;
+  bottom: 16px;
+  border-radius: 50%;
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  transform: rotate(61deg);
+}
