@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20180324181536) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role"
-    t.integer "score"
+    t.integer "score", default: 0
     t.string "country"
     t.string "token"
     t.integer "coordinator_id"
