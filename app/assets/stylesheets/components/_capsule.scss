@@ -11,18 +11,35 @@
   // box-shadow: $shadow;
   text-transform: uppercase;
   text-align: left;
+  p {
+    margin-bottom: 0;
+  }
+  .title {
+    width: 100px;
+  }
   .score {
     margin: auto;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: -10px;
     position: relative;
+    min-width: 75px;
+    text-align: right;
   }
   .exposant {
     position: absolute;
-    top: 9px;
+    top: 10px;
+    right: -33px;
     font-size: 1rem;
+  }
+  .total {
+    position: absolute;
+    font-size: 10px;
+    top: 48px;
+    font-size: 12px;
+    width: 100%;
+    left: 0px;
   }
   .talent {
     font-weight: bold;

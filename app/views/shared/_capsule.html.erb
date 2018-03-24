@@ -4,14 +4,8 @@
       <p class="talent"><%= title %></p>
       <p class="subtalent"><%= subtitle %></p>
     </div>
-    <% if url.size > 5 %>
-      <div class="capsule-badge-link" style="background-color: #EEE">
-        <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
-      </div>
-    <% end %>
-
     <div class="capsule-badge" style="background-color: <%= color %>">
-      <i class="fa fa-<%= icon %>" aria-hidden="true"></i>
+      <i class="<%= icon %>" aria-hidden="true"></i>
     </div>
   </div>
 </a>
