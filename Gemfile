@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.3'
 
 gem 'devise'
+gem 'devise-i18n', '~> 1.2'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
@@ -16,6 +17,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'rails-i18n', '5.0.3'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
