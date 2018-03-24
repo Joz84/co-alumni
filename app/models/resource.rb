@@ -4,7 +4,6 @@ class Resource < ApplicationRecord
   has_many :mission_resources
   mount_uploader :photo, PhotoUploader
 
-  validates :name, :description, presence: true
+  validates :name, :supervisor, :description, presence: true
   validates :name, uniqueness: true
-  validates :supervisor, presence: true
 end
