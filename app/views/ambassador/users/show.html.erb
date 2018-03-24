@@ -1,5 +1,49 @@
-<%= render "shared/event", date: "nov 2017 - now", poste: "Développeur Web & UX Designer & Web Designer, projet Parentheze" %>
-<%= render "shared/capsule", title: "Parentheze (responsive)", color: "#F15757", subtitle: "Ruby on Rails : 100\% BACK & FRONT & DESIGN ", url: "https://staging-parentheze.herokuapp.com", icon: "diamond" %>
-<%= render "shared/portrait", name: "Maxime Boué", statut: "Stagiaire au wagon", photo: "http://res.cloudinary.com/doodlid/image/upload/v1520417897/pjocsx3jx3yis6ikr6or.jpg" %>
-<%= render "shared/button", calltoaction: "afficher les coordonnées", mail: "abriko@yahoo.fr", phone: "06 88 58 88 14", social1: "Linkedin", social1_link: "https://www.linkedin.com/in/abriko/", social2: "Behance", social2_link: "https://www.behance.net/abriko" %>
-<%= render "shared/mosaique" %>
+<div class="double-padding-box dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="row">
+          <div class="col-12">
+            <%= render "shared/portrait", name: "Maxime Boué", statut: "Ambassadeur", photo: "http://res.cloudinary.com/doodlid/image/upload/v1520417897/pjocsx3jx3yis6ikr6or.jpg" %>
+          </div>
+          <div class="col-12">
+            <div class="margin-bottom-medium">
+              <%= render "shared/skills", title: "classement mondial", text: "48", type: "ème", total: "1300", color:"#CE1F5B" %>
+              <%= render "shared/skills", title: "classement national", text: "3", type: "ème", total: "35", color:"#7CBB9F" %>
+              <%= render "shared/skills", title: "score", text: "3245", type: "pts", total: "", color:"#2A336A" %>
+              <%= render "shared/skills", title: "succès", text: "22", type: "", total: "", color:"#E67E22" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="col-12">
+          <div class="margin-bottom-medium">
+            <%= render "shared/badge", icon: "fab fa-angrycreative", color: "#7CBB9F" %>
+            <%= render "shared/badge", icon: "fab fa-avianex", color: "#CE1F5B" %>
+            <%= render "shared/badge", icon: "fas fa-birthday-cake", color: "#2A336A" %>
+            <%= render "shared/badge", icon: "fas fa-chess-knight", color: "#E67E22" %>
+            <%= render "shared/badge", icon: "far fa-gem", color: "#7CBB9F" %>
+          </div>
+        </div>
+        <div class="col-12">
+          <p class="white">Mission en cours :</p>
+          <%= render "shared/capsule", title: "Présentation et dégustation des produits", color: "#F15757", url: "", subtitle: "en cours", icon: "fas fa-spinner" %>
+          <p class="white">Mission disponibles :</p>
+          <%= render "shared/capsule", title: "Organiser un cours de cuisine", color: "#2A336A", url: "", subtitle: "à faire avant 10 avril 2018", icon: "fas fa-bullhorn" %>
+          <p class="white">Mission réalisées :</p>
+          <%= render "shared/capsule", title: "Faire venir 150 personnes", color: "#CE1F5B", url: "", subtitle: "groupe facebook amis du ribéracois", icon: "fas fa-check" %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="activities">
+          <p>activités :</p>
+          <%= render "shared/event", date: "nov 2017 - now", poste: "Succès", subtitle: "Master of local events" %>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
