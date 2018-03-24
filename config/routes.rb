@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/contact', to: 'pages#contact'
+
   devise_for :users
 
   scope '(:locale)', locale: /en/ do
