@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :resources #, inverse_of: :supervisor
   has_many :missions
-  has_many :user_missions
+  has_many :user_missions, dependent: :destroy
   has_many :my_missions, through: :user_missions
+
+  mount_uploader :photo, PhotoUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
