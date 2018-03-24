@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   namespace :ambassador do
     resources :users, only: %I[show], path: :dashboard, as: :dashboard
   end
+
+  namespace :coordinator do
+    resources :users, only: %I[show], path: :dashboard, as: :dashboard
+  end
+
+  namespace :supervisor do
+    resources :users, only: %I[show], path: :dashboard, as: :dashboard
+  end
 end
