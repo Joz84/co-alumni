@@ -1,5 +1,6 @@
 .home {
-  background-image: url("http://res.cloudinary.com/doodlid/image/upload/v1521889808/co-alumni/vecto-map.svg");
+  background-image: url("vecto-map.svg");
   background-size: cover;
   background-position: center center;
+  height: calc(100vh - 70px);
 }

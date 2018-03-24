@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324142056) do
+ActiveRecord::Schema.define(version: 20180324135155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,48 @@ ActiveRecord::Schema.define(version: 20180324142056) do
     t.datetime "updated_at", null: false
     t.index ["achievement_id"], name: "index_user_achievements_on_achievement_id"
     t.index ["user_id"], name: "index_user_achievements_on_user_id"
+  create_table "mission_resources", force: :cascade do |t|
+    t.bigint "mission_id"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_id"], name: "index_mission_resources_on_mission_id"
+    t.index ["resource_id"], name: "index_mission_resources_on_resource_id"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "photo"
+    t.integer "score"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_missions_on_user_id"
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "video_url"
+    t.bigint "user_id"
+    t.bigint "kind_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "photo"
+    t.index ["kind_id"], name: "index_resources_on_kind_id"
+    t.index ["user_id"], name: "index_resources_on_user_id"
+  end
+
+  create_table "user_missions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "mission_id"
+    t.integer "status"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_id"], name: "index_user_missions_on_mission_id"
+    t.index ["user_id"], name: "index_user_missions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,4 +109,11 @@ ActiveRecord::Schema.define(version: 20180324142056) do
   add_foreign_key "achievements", "users"
   add_foreign_key "user_achievements", "achievements"
   add_foreign_key "user_achievements", "users"
+  add_foreign_key "mission_resources", "missions"
+  add_foreign_key "mission_resources", "resources"
+  add_foreign_key "missions", "users"
+  add_foreign_key "resources", "kinds"
+  add_foreign_key "user_missions", "missions"
+  add_foreign_key "user_missions", "users"
+
 end
