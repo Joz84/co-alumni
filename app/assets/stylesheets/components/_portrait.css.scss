@@ -1,0 +1,19 @@
+.portrait {
+  width: 100%;
+  height: 260px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: $shadow;
+  .photo {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+  }
+  margin-bottom: 10px;
+}
+

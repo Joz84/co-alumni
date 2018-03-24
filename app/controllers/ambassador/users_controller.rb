@@ -1,3 +1,5 @@
-class UsersController < ApplicationController
-  def show; end
+module Ambassador
+  class UsersController < ApplicationController
+    def show; end
+  end
 end
