@@ -1,10 +1,13 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Oswald:400,700");
 
 // Define fonts for body and headers
 $body-font: "Open Sans", "Helvetica", "sans-serif";
-$headers-font: 'Open Sans', sans-serif;
+$headers-font: 'Raleway', sans-serif;
 $button-font-size: 16px;
+$font-size-base: 0.9rem;
+$font-family-sans-serif:  $body-font;
+$headings-font-family:    $headers-font;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -15,3 +18,111 @@ $button-font-size: 16px;
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+h1, h2, h3, h4, h5, h6, p, i, a, span {
+  &.pink {
+    color: $pink;
+  }
+  &.blue {
+    color: $blue;
+  }
+  &.yellow {
+    color: $yellow;
+  }
+  &.white {
+    color: white;
+  }
+  &.red {
+    color: $red;
+  }
+  &.green {
+    color: $green;
+  }
+}
+h1, h2{
+  font-family: $headers-font;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  .fa {
+    position: absolute;
+    left: -1.3em;
+    top: 0.1em;
+    font-size: 70%;
+  }
+}
+h1 {
+  font-size: 72px;
+  line-height: 65px;
+}
+h2 {
+  font-size: 60px;
+  line-height: 58px;
+}
+h3 {
+  font-size: 35px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+h4 {
+  font-size: 18px;
+  letter-spacing: 3px;
+  letter-spacing: 0px;
+  font-family: $body-font;
+  line-height: 32px;
+  font-weight: normal;
+}
+h5, h5 a {
+  font-size: 12px;
+  letter-spacing: 0px;
+  font-weight: normal;
+  font-family: $body-font;
+  line-height: 32px;
+}
+h6, h6 a {
+  font-size: 8px;
+  font-weight: lighter;
+  font-family: $body-font;
+}
+p{
+  font-size: $font-size-base;
+  font-family: $body-font;
+  font-weight: 400;
+  line-height: 1.4em;
+}
+@media (max-device-width: 569px ) {
+  h1 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  h2 {
+    font-size: 30px;
+    line-height: 35px;
+  }
+  h3 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  h4 {
+    font-size: 18px;
+    letter-spacing: 0px;
+  }
+  h5 {
+    font-size: 12px;
+    letter-spacing: 0px;
+    line-height: 24px;
+  }
+  p{
+    font-size: 18px;
+  }
+}
+a {
+  font-family: $body-font;
+  font-size: 16px;
+}
+label, .form-control {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: normal;
+}

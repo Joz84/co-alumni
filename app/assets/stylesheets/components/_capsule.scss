@@ -11,6 +11,19 @@
   // box-shadow: $shadow;
   text-transform: uppercase;
   text-align: left;
+  .score {
+    margin: auto;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-top: 0;
+    position: relative;
+  }
+  .exposant {
+    position: absolute;
+    top: 9px;
+    font-size: 1rem;
+  }
   .talent {
     font-weight: bold;
   }

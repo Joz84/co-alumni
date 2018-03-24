@@ -1,0 +1,22 @@
+.badge {
+  height: 75px;
+  width: 75px;
+  position: relative;
+  background-color: $white;
+  border-radius: 50%;
+  font-size: 40px;
+  margin-right: 15px;
+  color: white;
+  .badge-color {
+    position: absolute;
+    background-color: $blue;
+    height: 65px;
+    width: 65px;
+    top: 5px;
+    right: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,5 +1,30 @@
+<div class="double-padding-box dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="row">
+          <div class="col-12">
+            <%= render "shared/portrait", name: "Maxime Boué", statut: "Stagiaire au wagon", photo: "http://res.cloudinary.com/doodlid/image/upload/v1520417897/pjocsx3jx3yis6ikr6or.jpg" %>
+          </div>
+          <div class="col-12">
+            <%= render "shared/skills", title: "score", text: "3245", type: "pts", color:"#2A336A" %>
+            <%= render "shared/skills", title: "succès", text: "22", type: "", color:"#E67E22" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-8">
+        <%= render "shared/badge", icon: "fab fa-angrycreative", color: "#7CBB9F" %>
+        <%= render "shared/badge", icon: "fab fa-avianex", color: "#CE1F5B" %>
+        <%= render "shared/badge", icon: "fas fa-birthday-cake", color: "#2A336A" %>
+        <%= render "shared/badge", icon: "fas fa-chess-knight", color: "#E67E22" %>
+        <%= render "shared/badge", icon: "far fa-gem", color: "#7CBB9F" %>
+      </div>
+    </div>
+  </div>
+</div>
 <%= render "shared/event", date: "nov 2017 - now", poste: "Développeur Web & UX Designer & Web Designer, projet Parentheze" %>
 <%= render "shared/capsule", title: "Parentheze (responsive)", color: "#F15757", subtitle: "Ruby on Rails : 100\% BACK & FRONT & DESIGN ", url: "https://staging-parentheze.herokuapp.com", icon: "diamond" %>
-<%= render "shared/portrait", name: "Maxime Boué", statut: "Stagiaire au wagon", photo: "http://res.cloudinary.com/doodlid/image/upload/v1520417897/pjocsx3jx3yis6ikr6or.jpg" %>
-<%= render "shared/button", calltoaction: "afficher les coordonnées", mail: "abriko@yahoo.fr", phone: "06 88 58 88 14", social1: "Linkedin", social1_link: "https://www.linkedin.com/in/abriko/", social2: "Behance", social2_link: "https://www.behance.net/abriko" %>
+
+<%#= render "shared/button", calltoaction: "afficher les coordonnées", mail: "abriko@yahoo.fr", phone: "06 88 58 88 14", social1: "Linkedin", social1_link: "https://www.linkedin.com/in/abriko/", social2: "Behance", social2_link: "https://www.behance.net/abriko" %>
 <%= render "shared/mosaique" %>
