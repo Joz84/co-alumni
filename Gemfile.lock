@@ -57,6 +57,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.6.1)
+      devise (>= 4.4)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -120,6 +122,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (5.0.3)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     railties (5.1.5)
       actionpack (= 5.1.5)
       activesupport (= 5.1.5)
@@ -189,6 +194,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (~> 3.3)
   devise
+  devise-i18n (~> 1.2)
   figaro
   font-awesome-sass (~> 4.7)
   jbuilder (~> 2.0)
@@ -198,6 +204,7 @@ DEPENDENCIES
   pry-rails
   puma
   rails (= 5.1.5)
+  rails-i18n (= 5.0.3)
   redis
   sass-rails
   simple_form
