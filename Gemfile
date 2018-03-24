@@ -12,6 +12,8 @@ gem 'redis'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap', '~> 4.0.0'
+gem 'carrierwave', '~> 1.2'
+gem 'cloudinary'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'rails-i18n', '5.0.3'
 gem 'sass-rails'
@@ -19,9 +21,6 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
-gem 'rails-i18n', '5.0.3'
-gem 'cloudinary'
-gem 'carrierwave', '~> 1.2'
 
 gem 'rest-client'
 

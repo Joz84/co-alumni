@@ -1,15 +1,16 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :resources #, inverse_of: :supervisor
-  has_many :missions
-  has_many :user_missions, dependent: :destroy
-  has_many :my_missions, through: :user_missions
 
   mount_uploader :photo, PhotoUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :resources, dependent: :destroy #, inverse_of: :supervisor
+  has_many :user_missions, dependent: :destroy
+  has_many :missions, dependent: :destroy
+  has_many :own_missions, through: :user_missions
 
   has_many :user_achievements, dependent: :destroy
   has_many :achievements, dependent: :destroy
