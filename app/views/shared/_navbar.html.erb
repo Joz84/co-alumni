@@ -1,7 +1,9 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%#= image_tag "logo.png", height: 50 %>
+    <% unless current_page?(root_path) %>
+      <%= image_tag "logo.svg", height: 35 %>
+    <% end %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,28 +12,27 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Leaderboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Leaderboard") %>
               <% end %>
             </li>
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-cog"></i> <%= t(".settings", default: "Settings") %>
+                <i class="fa fa-cog"></i> <%= t(".settings", default: "Dashboard") %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i> <%= t(".sign_out", default: "Log out") %>
+                <i class="fa fa-sign-out"></i> <%= t(".sign_out", default: "Déconnexion") %>
               <% end %>
             </li>
           </ul>
@@ -50,9 +51,9 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><a href="#">connexion</a></li>
+        <li><a href="#">nous rejoindre</a></li>
+        <li><a href="#">à propos de nous</a></li>
       </ul>
     </div>
   </div>

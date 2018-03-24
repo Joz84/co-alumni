@@ -9,11 +9,14 @@
   position: absolute;
   right: 0px;
   top: 0px;
+  width: 100%;
+  background-color: white;
+  z-index: 500;
 }
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 35px;
 }
 
 /* User Avatar */
