@@ -53,33 +53,37 @@ puts "Creating Mission"
 
 puts "Creating User_Mission"
   ambassadors = User.ambassador
-  UserMission.create!(user: ambassadors[0], mission: m, date: DateTime.new(2018,02,20))
+  UserMission.create!(user: ambassadors[0], mission: m, date: DateTime.new(2018,02,20)).done!
   UserMission.create!(user: ambassadors[1], mission: m, date: DateTime.new(2018,03,24))
-  UserMission.create!(user: ambassadors[0], mission: m3, status: 1, date: DateTime.new(2018,01,12))
-  UserMission.create!(user: ambassadors[3], mission: m2, status: 2, date: DateTime.new(2018,04,10))
-  UserMission.create!(user: ambassadors[2], mission: m2, status: 1, date: DateTime.new(2018,03,22))
-  UserMission.create!(user: ambassadors[4], mission: m2, status: 0, date: DateTime.new(2018,03,22))
-  UserMission.create!(user: ambassadors[5], mission: m2, status: 1, date: DateTime.new(2018,05,20))
-  UserMission.create!(user: ambassadors[6], mission: m2, status: 0, date: DateTime.new(2018,01,20))
-  UserMission.create!(user: ambassadors[12], mission: m2, status: 0, date: DateTime.new(2018,01,20))
-  UserMission.create!(user: ambassadors[12], mission: m1, status: 1, date: DateTime.new(2018,02,10))
-  UserMission.create!(user: ambassadors[11], mission: m2, status: 0, date: DateTime.new(2018,06,20))
-  UserMission.create!(user: ambassadors[14], mission: m, status: 0, date: DateTime.new(2018,05,26))
-  UserMission.create!(user: ambassadors[16], mission: m, status: 1, date: DateTime.new(2018,04,20))
+  UserMission.create!(user: ambassadors[0], mission: m3, date: DateTime.new(2018,01,12)).done!
+  UserMission.create!(user: ambassadors[3], mission: m2, date: DateTime.new(2018,04,10))
+  UserMission.create!(user: ambassadors[2], mission: m2, date: DateTime.new(2018,03,22)).done!
+  UserMission.create!(user: ambassadors[4], mission: m2, date: DateTime.new(2018,03,22)).done!
+  UserMission.create!(user: ambassadors[5], mission: m2, date: DateTime.new(2018,05,20))
+  UserMission.create!(user: ambassadors[6], mission: m2, date: DateTime.new(2018,01,20)).done!
+  UserMission.create!(user: ambassadors[12], mission: m2, date: DateTime.new(2018,01,20)).done!
+  UserMission.create!(user: ambassadors[12], mission: m3, date: DateTime.new(2018,02,10)).done!
+  UserMission.create!(user: ambassadors[12], mission: m2, date: DateTime.new(2018,03,20)).done!
+  UserMission.create!(user: ambassadors[14], mission: m, date: DateTime.new(2018,05,26))
+  UserMission.create!(user: ambassadors[16], mission: m, date: DateTime.new(2018,04,20))
 
 puts "Creating Mission_Ressources"
-  MissionResource.create!(mission: m, ressource: r)
-  MissionResource.create!(mission: m, ressource: r1)
-  MissionResource.create!(mission: m, ressource: r2)
-  MissionResource.create!(mission: m, ressource: r4)
-  MissionResource.create!(mission: m, ressource: r5)
-  MissionResource.create!(mission: m2, ressource: r)
-  MissionResource.create!(mission: m2, ressource: r3)
-  MissionResource.create!(mission: m2, ressource: r4)
-  MissionResource.create!(mission: m, ressource: r6)
-  MissionResource.create!(mission: m3, ressource: r5)
+  MissionResource.create!(mission: m, resource: r)
+  MissionResource.create!(mission: m, resource: r1)
+  MissionResource.create!(mission: m, resource: r2)
+  MissionResource.create!(mission: m, resource: r4)
+  MissionResource.create!(mission: m, resource: r5)
+  MissionResource.create!(mission: m2, resource: r)
+  MissionResource.create!(mission: m2, resource: r3)
+  MissionResource.create!(mission: m2, resource: r4)
+  MissionResource.create!(mission: m, resource: r6)
+  MissionResource.create!(mission: m3, resource: r5)
 
-puts "Creating Achivement"
-
+puts "Creating Achievement"
+  Achievement.create!(name:"Master Creative" , badge: "fab fa-angrycreative", description: "Cet ambassadeur a su développé le réseau via des initiatives créatives et ludiques", user: s, required: 100 )
+  Achievement.create!(name:"Navigateur Extreme" , badge: "fab fa-avianex", description: "Cet ambassadeur a su parcourir sa région pour développer son réseau", user: s, required: 50 )
+  Achievement.create!(name:"Cuisine Addict" , badge: "fas fa-birthday-cake", description: "Cet ambassadeur a su réalisé de nombreux cours de cuisine", user: s, required: 300 )
+  Achievement.create!(name:"Organisateur Ultime" , badge: "fas fa-chess-knight", description: "Cet ambassadeur a organisé plus de 3 événements en 3 mois", user: s1, required: 400 )
+  Achievement.create!(name:"Alumni Ruby" , badge: "far fa-gem", description: "Cet ambassadeur a organisé plus de 10 événements et représente un élément clé du réseau", user: s1, required: 500 )
 
 puts "Finished"

@@ -9,6 +9,6 @@ class UserMission < ApplicationRecord
   private
 
   def handle_points
-    binding.pry
+
   end
 end
