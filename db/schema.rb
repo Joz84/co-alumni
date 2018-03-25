@@ -112,10 +112,11 @@ ActiveRecord::Schema.define(version: 20180325091340) do
     t.string "last_name"
     t.integer "role"
     t.integer "score", default: 0
-    t.string "country"
+    t.bigint "country_id"
     t.string "token"
     t.integer "coordinator_id"
     t.string "photo"
+    t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
