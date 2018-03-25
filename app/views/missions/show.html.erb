@@ -15,14 +15,19 @@
             <%= resource.name  %>
             <%= resource.kind.name %>
             <%= resource.description %>
-            <%= image_tag(resource.photo_url) %>
+            <%= image_tag(resource.photo_url) unless resource.photo_url.nil? %>
           <% end %>
 
 
        <!--  liens vers User Mission -->
 
-       <%# if current_user.user_missions.nil? %>
+      <h3>Mission Status</h3>
 
+     <!--  ongoing user_mission -->
+       <%# if current_user.user_missions.where(mission: @mission).nil? %>
+        <%# current_user.user_missions.where(mission: @mission).each do |user_mission| %>
+          <%#= user_mission.mission.name %>
+        <%# end %>
        <%# end %>
 
 
