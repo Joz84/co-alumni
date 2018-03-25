@@ -32,6 +32,7 @@ gem 'country_select'
 gem 'rest-client'
 gem 'paleta'
 gem 'cocoon'
+gem 'rails-assets-smalot-bootstrap-datetimepicker', source: 'https://rails-assets.org'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
