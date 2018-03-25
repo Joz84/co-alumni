@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :missions
   has_many :user_missions
   has_many :my_missions, through: :user_missions
+  belongs_to :country
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -19,4 +20,11 @@ class User < ApplicationRecord
       break random_token unless User.exists?(token: random_token)
     end
   end
+
+  def self.best(attrs)
+    where( role: attrs[:role] )
+    .order(score: :desc)
+    .limit( attrs[:number] )
+  end
+
 end
