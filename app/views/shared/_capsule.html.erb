@@ -9,6 +9,7 @@
       </div>
     <% else %>
       <div class="capsule-badge" style="background-color: <%= content[:color] %>; background-image: url(<%= content[:photo].to_s %>);">
+        <i class="<%= content[:icon] %>" aria-hidden="true"></i>
       </div>
     <% end %>
 

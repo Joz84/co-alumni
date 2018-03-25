@@ -3,9 +3,22 @@
   width: 100%;
   background-color: $blue;
   color: white;
+  background-size: cover;
+  background-position: center center;
   .activities {
     color: $white;
     text-align: center;
     margin: auto;
   }
+}
+.form-box {
+  @include media-breakpoint-down(sm) { width: 100%; }
+  @include media-breakpoint-up(sm) { width: 500px; }
+  background-color: $white;
+  color: $dark-gray;
+  border-radius: $border-radius;
+  min-height: 400px;
+  padding: 40px;
+  margin: auto;
+  box-shadow: $shadow;
 }

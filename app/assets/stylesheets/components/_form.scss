@@ -1,0 +1,16 @@
+.ressources {
+  background-color: $blue;
+  color: white;
+  .ressource-description {
+    width: 100%;
+    min-height: 400px;
+    color: $dark-gray;
+    padding: 40px;
+    box-shadow: $shadow;
+    background-color: $white;
+    border-radius: $border-radius;
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -8,8 +8,8 @@
 <div class="double-padding-box dashboard">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h3>LES DERNIÈRES<br>ACTIONS :</h3>
+      <div class="col-md-4 text-center">
+        <h6>LES DERNIÈRES<br>ACTIONS :</h6>
         <ul class="list-unstyled">
           <% @user_missions.each do |user_mission| %>
             <li>
@@ -24,8 +24,8 @@
           <% end %>
         </ul>
       </div>
-      <div class="col-md-4">
-        <h3>NOS MEILLEURS<br>COORDINATORS :</h3>
+      <div class="col-md-4 text-center">
+        <h6>NOS MEILLEURS<br>COORDINATORS :</h6>
         <ul class="list-unstyled">
           <% @best_coordinators.each do |coordinator| %>
             <li>
@@ -40,8 +40,8 @@
           <% end %>
         </ul>
       </div>
-      <div class="col-md-4">
-        <h3>NOS MEILLEURS<br>AMBASSADEURS :</h3>
+      <div class="col-md-4 text-center">
+        <h6>NOS MEILLEURS<br>AMBASSADEURS :</h6>
         <ul class="list-unstyled">
           <% @best_ambassadors.each do |ambassador| %>
             <li>
