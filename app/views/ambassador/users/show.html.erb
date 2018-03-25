@@ -36,6 +36,7 @@
           <% @missions_booked.each do |user_mission| %>
             <%= render "shared/capsule", title: user_mission.mission.name, color: "#F15757",
                                                               url: mission_path(user_mission.mission),
+                                                              method: :get,
                                                               subtitle: "en cours",
                                                               icon: "fas fa-spinner",
                                                               score: user_mission.mission.score %>
@@ -62,7 +63,13 @@
           <p class="yellow margin-bottom-big">Aucune mission réalisées pour l'instant.</p>
           <% end %>
           <% @missions_done.each do |user_mission| %>
-            <%= render "shared/capsule", title: user_mission.mission.name, color: "#CE1F5B", url: "", subtitle: "terminée", icon: "fas fa-check", score: "" %>
+            <%= render "shared/capsule", title: user_mission.mission.name,
+                                         color: "#CE1F5B",
+                                         url: "",
+                                         method: :get,
+                                         subtitle: "terminée",
+                                         icon: "fas fa-check",
+                                         score: "" %>
           <% end %>
 
         </div>
