@@ -18,6 +18,9 @@ class User < ApplicationRecord
   belongs_to :country
 
   before_create :generate_token
+
+  after_create :add_amb_points
+
   after_update :check_achievements, if: :saved_change_to_score?
 
   validates :first_name, :last_name, :email, :country, :role, presence: true
@@ -49,5 +52,10 @@ class User < ApplicationRecord
       next if own_achievements.include?(achievement)
       UserAchievement.create(achievement: achievement, user: self)
     end
+  end
+
+  def add_amb_points
+    return unless ambassador?
+    coordinator.update(score: coordinator.score += 300)
   end
 end
