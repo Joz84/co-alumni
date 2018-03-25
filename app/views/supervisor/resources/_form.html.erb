@@ -1,0 +1,8 @@
+<%= simple_form_for [:supervisor, resource] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.association :kind %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

@@ -1,20 +1,10 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-
-  # has_many :resources #, inverse_of: :supervisor
-  # has_many :missions
-  # has_many :user_missions
-  # has_many :my_missions, through: :user_missions
-  belongs_to :country
-
   mount_uploader :photo, PhotoUploader
-
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :resources, dependent: :destroy #, inverse_of: :supervisor
+  has_many :resources, dependent: :destroy
   has_many :user_missions, dependent: :destroy
   has_many :missions, dependent: :destroy
   has_many :own_missions, through: :user_missions, source: :mission
@@ -24,6 +14,8 @@ class User < ApplicationRecord
   has_many :own_achievements, through: :user_achievements, source: :achievement
 
   belongs_to :coordinator, class_name: 'User', foreign_key: :coordinator_id, optional: true
+
+  belongs_to :country
 
   before_create :generate_token
   after_update :check_achievements, if: :saved_change_to_score?
@@ -37,8 +29,10 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.upcase}"
   end
 
-  def own_missions_by(status)
-    own_missions.where(status: status)
+  def self.best(attrs)
+    where(role: attrs[:role])
+      .order(score: :desc)
+      .limit(attrs[:number])
   end
 
   private
@@ -48,12 +42,6 @@ class User < ApplicationRecord
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless User.exists?(token: random_token)
     end
-  end
-
-  def self.best(attrs)
-    where( role: attrs[:role] )
-    .order(score: :desc)
-    .limit( attrs[:number] )
   end
 
   def check_achievements

@@ -23,9 +23,8 @@ Rails.application.routes.draw do
 
   namespace :supervisor do
     resources :users, only: %I[show], path: :dashboard, as: :dashboard
-    resources :resources
+    resources :resources, only: %I[new create edit update destroy]
   end
-
 
   resources :resources, only: %I[index show]
 end
