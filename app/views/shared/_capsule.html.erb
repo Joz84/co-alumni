@@ -1,11 +1,11 @@
-<%# link_to url %>
+<%= link_to url do %>
   <div class="capsule <%= "clickable" if url.size > 5 %>">
     <div class="capsule-text">
       <p class="talent"><%= title %></p>
-      <p class="subtalent"><%= subtitle %></p>
+      <p class="subtalent"><strong><%= score %> pts</strong> - à faire avant le 14 mai 2018</p>
     </div>
     <div class="capsule-badge" style="background-color: <%= color %>">
       <i class="<%= icon %>" aria-hidden="true"></i>
     </div>
   </div>
-<%# end %>
+<% end %>
