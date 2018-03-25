@@ -18,9 +18,17 @@ module Supervisor
     end
 
     def edit
+      @mission = Mission.find(params[:id])
     end
 
     def update
+      @mission = Mission.find(params[:id])
+      if @mission.update_attributes(mission_params)
+        flash[:notice] = 'Mission mise à jour avec succés'
+        redirect_to mission_path(@mission)
+      else
+        render 'missions/show'
+      end
     end
 
     private
@@ -30,3 +38,4 @@ module Supervisor
     end
   end
 end
+

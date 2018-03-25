@@ -37,10 +37,10 @@ puts "Creating Kinds"
   recette = Kind.create!(name: "Recettes")
 
 puts "Creating Users"
-  s = User.create!(email: "jdupont@gmail.com", password: "azerty", first_name: "John", last_name: "Dupont", role: 2, country: france) #supervisor
-  s1 = User.create!(email: "tdufour@gmail.com", password: "azerty", first_name: "Tom", last_name: "Dufour", role: 2, country: france) #supervisor
-  u = User.create!(email: "esass@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Sass", role: 1, country: canada) #coordinator
-  u2 = User.create!(email: "mparent@gmail.com", password: "azerty", first_name: "Marcel", last_name: "Parent", role: 1, country: spain) #coordinateur
+  s = User.create!(email: "jdupont@gmail.com", password: "azerty", first_name: "John", last_name: "Dupont", role: 2, country: france, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/Aquaj") #supervisor
+  s1 = User.create!(email: "tdufour@gmail.com", password: "azerty", first_name: "Tom", last_name: "Dufour", role: 2, country: france, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/louismathe") #supervisor
+  u = User.create!(email: "esass@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Sass", role: 1, country: canada, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/sherpanat") #coordinator
+  u2 = User.create!(email: "mparent@gmail.com", password: "azerty", first_name: "Marcel", last_name: "Parent", role: 1, country: spain, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/Mheaus") #coordinateur
   index = 1
 
   user_call = RestClient.get('https://randomuser.me/api/?results=30&password=special,upper,lower,number&nat=us,dk,fr,es')
