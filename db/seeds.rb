@@ -65,7 +65,7 @@ puts "Creating Resources"
   r4 = Resource.create!(name: "Miel", description: miel, supervisor: s, kind: k, remote_photo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Runny_hunny.jpg/1024px-Runny_hunny.jpg" )
   r5 = Resource.create!(name: "Chocolaterie La Ruchette", description: "Apiculteur, Basé dans le pays ribéracois", supervisor: s, kind: producteur, remote_photo_url: "http://www.chocolaterie-laruchette.com/images/vitrine.jpg" )
   r6 = Resource.create!(name: "Yolaine et Thierry", description: "Apiculteur, Basé dans le pays ribéracois", supervisor: s, kind: producteur, remote_photo_url: "http://www.yolainethierry.fr/images/IMG_1341b.jpg" )
-  r7 = Resource.create!(name: "Process de Fabrication du miel", description: "Vidéo explicative", supervisor: s, kind: producteur, video_url: "https://youtu.be/X3Ahiv2ZIL4?t=4" )
+  r7 = Resource.create!(name: "Process de Fabrication du miel", description: "Vidéo explicative", supervisor: s, kind: producteur, video_url: "https://www.youtube.com/embed/X3Ahiv2ZIL4?start=238" )
 
 puts "Creating Mission"
 
