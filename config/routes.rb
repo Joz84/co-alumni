@@ -26,9 +26,6 @@ Rails.application.routes.draw do
     resources :resources
   end
 
-  namespace :leaderboard do
-
-  end
 
   resources :resources, only: %I[index show]
 end
