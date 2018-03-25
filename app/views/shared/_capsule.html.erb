@@ -1,0 +1,11 @@
+<%# link_to url %>
+  <div class="capsule <%= "clickable" if url.size > 5 %>">
+    <div class="capsule-text">
+      <p class="talent"><%= title %></p>
+      <p class="subtalent"><%= subtitle %></p>
+    </div>
+    <div class="capsule-badge" style="background-color: <%= color %>">
+      <i class="<%= icon %>" aria-hidden="true"></i>
+    </div>
+  </div>
+<%# end %>
