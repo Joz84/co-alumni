@@ -37,8 +37,10 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.upcase}"
   end
 
-  def own_missions_by(status)
-    own_missions.where(status: status)
+  def self.best(attrs)
+    where(role: attrs[:role])
+      .order(score: :desc)
+      .limit(attrs[:number])
   end
 
   private
@@ -48,12 +50,6 @@ class User < ApplicationRecord
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless User.exists?(token: random_token)
     end
-  end
-
-  def self.best(attrs)
-    where( role: attrs[:role] )
-    .order(score: :desc)
-    .limit( attrs[:number] )
   end
 
   def check_achievements

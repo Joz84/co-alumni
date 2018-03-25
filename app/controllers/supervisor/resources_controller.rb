@@ -1,27 +1,28 @@
 module Supervisor
   class ResourcesController < ApplicationController
     before_action :check_role
-    before_action :set_resource, only: %I[show edit update destroy]
+    before_action :set_resource, only: %I[edit update destroy]
+    before_action :set_new_resource, only: %I[new edit]
+    before_action :set_new_resource_with_params, only: %I[create]
 
-    def index; end
-
-    def show; end
-
-    def new
-      @resource = Resource.new
-    end
+    def new; end
 
     def create
-      @resource = Resource.new(resource_params)
       return render :new unless @resource.save
-      redirect_to supervisor_resource_path(@resource)
+      redirect_to resource_path(@resource)
     end
 
     def edit; end
 
-    def update; end
+    def update
+      return render :edit unless @ressource.update(resource_params)
+      redirect_to resource_path(@resource)
+    end
 
-    def destroy; end
+    def destroy
+      return redirect_to resource_path(@resource) unless @resource.destroy
+      redirect_to resources_path
+    end
 
     private
 
@@ -32,6 +33,14 @@ module Supervisor
 
     def set_resource
       @resource = Resource.find(params[:id])
+    end
+
+    def set_new_resource
+      @resource = Resource.new
+    end
+
+    def set_new_resource_with_params
+      @resource = Resource.new(resource_params)
     end
 
     def resource_params
