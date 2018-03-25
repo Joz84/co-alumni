@@ -49,6 +49,7 @@
           <% @missions_todo.each do |mission| %>
             <%= render "shared/capsule", title: mission.name, color: "#2A336A",
                                                               url: mission_path(mission),
+                                                              method: :get,
                                                               subtitle: "à faire avant 10 avril 2018",
                                                               icon: "fas fa-plus",
                                                               score: mission.score %>

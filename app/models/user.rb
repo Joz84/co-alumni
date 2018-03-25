@@ -20,7 +20,7 @@ class User < ApplicationRecord
   before_create :generate_token
   after_update :check_achievements, if: :saved_change_to_score?
 
-  validates :first_name, :last_name, :email, :country, presence: true
+  validates :first_name, :last_name, :email, :country, :role, presence: true
   validates :coordinator, presence: true, if: :ambassador?
 
   enum role: { ambassador: 0, coordinator: 1, supervisor: 2 }
