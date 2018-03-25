@@ -12,23 +12,24 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Leaderboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Dashboard", ambassador_dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Tableau de Bord", leaderboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mon Profil", user_dashboard(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Ressources", resources_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "🇬🇧", "#", class: "navbar-wagon-item navbar-wagon-link", id: "flag" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Leaderboard") %>
+              <%= link_to user_dashboard(current_user) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>
               <% end %>
             </li>
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-cog"></i> <%= t(".settings", default: "Dashboard") %>
+                <i class="fa fa-cog"></i> <%= t(".settings", default: "Ressources") %>
               <% end %>
             </li>
             <li>
@@ -41,9 +42,9 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "nous rejoindre"), contact_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_in", default: "à propos de nous"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_in", default: "connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Nous rejoindre"), contact_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "A propos de nous"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
@@ -52,9 +53,9 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">connexion</a></li>
-        <li><a href="#">nous rejoindre</a></li>
-        <li><a href="#">à propos de nous</a></li>
+        <li><%= link_to "Nous rejoindre", contact_path %></li>
+        <li><%= link_to "Connexion", new_user_session_path %></li>
+        <li><%= link_to "A propos de nous", new_user_session_path %></li>
       </ul>
     </div>
   </div>

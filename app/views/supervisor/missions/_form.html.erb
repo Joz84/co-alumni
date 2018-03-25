@@ -1,3 +1,4 @@
+
 <div class="double-padding-box dashboard">
   <div class="container">
     <div class="row">
@@ -9,8 +10,9 @@
             <%= f.error_notification %>
             <%= f.input :name, required: true, label: "Nom de ma mission" %>
             <%= f.input :description, required: true, label: "Description de ma mission"%>
-            <%= f.input :remote_photo_url, label: "Url de la photo" %>
-            <%= f.input :lastest_date, label: "Date au plus tard pour réaliser la mission" %>
+            <%= f.input :photo, label: "Ajouter une photo" %>
+            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.input :lastest_date, as: :string, input_html: { class: "datetimepicker" }, label: "Date au plus tard pour réaliser la mission" %>
             <%= f.input :score, required: true, label: "Score" %>
             <%#= f.association :mission_resource, collection: :,prompt: "Selectionner une ressource", required: true %>
             <% @mission.mission_resources.each do |mission_resource| %>
@@ -43,3 +45,15 @@
 </div>
 
 
+
+<%= content_for :after_js do %>
+  <script>
+    $(".datetimepicker").datetimepicker({
+      language: 'fr',
+      format: 'dd/mm/yyyy',
+      startView: 3,
+      minView: 2,
+      autoclose: true
+    });
+  </script>
+<% end %>

@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.1.5)
       actionpack (= 5.1.5)
@@ -156,6 +157,7 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.1.5)
       sprockets-rails (>= 2.0.0)
+    rails-assets-smalot-bootstrap-datetimepicker (2.4.4)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -263,6 +265,7 @@ DEPENDENCIES
   pry-rails
   puma
   rails (= 5.1.5)
+  rails-assets-smalot-bootstrap-datetimepicker!
   rails-i18n (= 5.0.3)
   redis
   rest-client

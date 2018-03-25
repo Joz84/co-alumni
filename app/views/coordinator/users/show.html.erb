@@ -7,7 +7,7 @@
             <%= render "shared/portrait", content: {
                                           name: @user.full_name,
                                           statut: @user.role,
-                                          photo: @user.remote_photo_url,
+                                          photo: @user.photo_url,
                                           link: root_path,
                                           } %>
           </div>
@@ -25,7 +25,7 @@
       <div class="col-12 col-md-6">
         <div class="col-12">
 
-          <p class="white">Mission en cours :</p>
+          <p class="white">Mission(s) en cours :</p>
           <% if @ambassador_missions.length == 0 %>
           <p class="yellow margin-bottom-big">Aucune mission chez vos ambassadeurs.</p>
           <% end %>
@@ -35,11 +35,12 @@
                                                     score: us.mission.score,
                                                     method: :get,
                                                     subtitle: "terminée",
-                                                    photo: us.user.photo_url
+                                                    photo: us.user.photo_url,
+                                                    url: mission_path(us.mission)
                                                     } %>
           <% end %>
 
-          <p class="white">Mission créées :</p>
+          <p class="white">Mission(s) créées :</p>
           <% if @missions_todo.length == 0 %>
           <p class="yellow margin-bottom-big">Aucune mission disponibles actuellement.</p>
           <% end %>
@@ -55,7 +56,7 @@
                                                     } %>
           <% end %>
 
-          <p class="white">Ambassadeur :</p>
+          <p class="white">Ambassadeur(s) :</p>
           <% if @ambassadors == 0 %>
           <p class="yellow margin-bottom-big">Aucune ambassadeur.</p>
           <% end %>
@@ -71,21 +72,26 @@
                                                     } %>
           <% end %>
 
-
-
-
-
-
         </div>
       </div>
       <div class="col-md-2">
-        <%= render "shared/button_round", content: { link: "",
+        <% if current_user.role == "coordinator" %>
+        <%= render "shared/button_round", content: {
                                                      icon: "fa fa-plus",
                                                      btn_link: new_coordinator_mission_path,
                                                      method: :get,
                                                      color: "",
                                                      text: "Créer une mission"} %>
+        <%= render "shared/button_round", content: {
+                                                     icon: "fa fa-plus",
+                                                     btn_link: "#",
+                                                     method: :get,
+                                                     color: "#7CBB9F",
+                                                     text: "Inviter un ambassadeur"} %>
+        <% end %>
       </div>
+
+
     </div>
   </div>
 </div>
