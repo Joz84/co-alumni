@@ -51,12 +51,26 @@
         </div>
       </div>
       <div class="col-md-2">
+        <% if current_user.role == "supervisor" %>
+        <%= render "shared/button_round", content: {
+                                                     icon: "fa fa-plus",
+                                                     btn_link: new_supervisor_resource_path,
+                                                     method: :get,
+                                                     color: "#7CBB9F",
+                                                     text: "Ajouter une ressource"} %>
         <%= render "shared/button_round", content: { link: "",
                                                      icon: "fa fa-plus",
                                                      btn_link: new_coordinator_mission_path,
                                                      method: :get,
                                                      color: "",
                                                      text: "Créer une mission"} %>
+        <%= render "shared/button_round", content: {
+                                                     icon: "fa fa-plus",
+                                                     btn_link: "#",
+                                                     method: :get,
+                                                     color: "#7CBB9F",
+                                                     text: "Inviter un coordinateur"} %>
+        <% end %>
       </div>
     </div>
   </div>
