@@ -1,38 +1,60 @@
-<div class="double-padding-box dashboard">
+<div class="double-padding-box ressources">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-8">
         <div class="row">
           <div class="col-12">
-            <%= @mission.name %>
+            <div class="ressource-description">
+              <h1><%= @mission.name %></h1>
+              <%= @mission.description %>
+              <div class="bar-separator"></div>
+              <% @mission.resources.each do |resource| %>
+                <h3><%= resource.name %></h3>
+                <h6><%= resource.kind.name %></h6>
+                <div class="row">
+                  <div class="col-8">
+                    <%= resource.description %>
+                  </div>
+                  <div class="col-4">
+                    <%= image_tag(resource.photo_url) unless resource.photo_url.nil? %>
+                  </div>
+                </div>
+                <div class="bar-separator-inner"></div>
+              <% end %>
+            </div>
           </div>
           <div class="col-12">
-            <%= @mission.description %>
           </div>
         </div>
-
-          <% @mission.resources.each do |resource| %>
-            <%= resource.name  %>
-            <%= resource.kind.name %>
-            <%= resource.description %>
-            <%= image_tag(resource.photo_url) unless resource.photo_url.nil? %>
+      </div>
+      <div class="col-12 col-md-4">
+        <h4>Mission en cours :</h4>
+        <% if current_user.user_missions.where(mission: @mission).nil? %>
+          <% current_user.user_missions.where(mission: @mission).each do |user_mission| %>
+            <%= render "shared/capsule", title: "Mission en cours", color: "#2A336A",
+                                                              url: "",
+                                                              method: "",
+                                                              subtitle: "à faire avant le 10 avril 2018",
+                                                              icon: "fas fa-spinner",
+                                                              score: @mission.score %>
           <% end %>
-
-
-       <!--  liens vers User Mission -->
-
-      <h3>Mission Status</h3>
-
-     <!--  ongoing user_mission -->
-       <%# if current_user.user_missions.where(mission: @mission).nil? %>
-        <%# current_user.user_missions.where(mission: @mission).each do |user_mission| %>
-          <%#= user_mission.mission.name %>
-        <%# end %>
-       <%# end %>
-
-
-
-
+        <% else %>
+          <p class="yellow">Aucune mission de ce type en cours.</p>
+        <% end %>
+        <h4>Commencer cette mission :</h4>
+        <%= render "shared/capsule", title: "Ajouter cette mission", color: "#2A336A",
+                                                          url: mission_user_missions_path(@mission),
+                                                          method: :post,
+                                                          subtitle: "à faire avant le 10 avril 2018",
+                                                          icon: "fas fa-plus",
+                                                          score: @mission.score %>
+        <%= render "shared/capsule", title: "Annuler la mission", color: "#EE5F5B",
+                                                          url: "destroy mission",
+                                                          method: "",
+                                                          subtitle: "",
+                                                          icon: "fas fa-minus",
+                                                          score: "" %>
+      </div>
       </div>
     </div>
   </div>

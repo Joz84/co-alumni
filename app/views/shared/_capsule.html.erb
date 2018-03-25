@@ -1,8 +1,8 @@
-<%= link_to url do %>
+<%= link_to url, method: method do %>
   <div class="capsule <%= "clickable" if url.size > 5 %>">
     <div class="capsule-text">
       <p class="talent"><%= title %></p>
-      <p class="subtalent"><strong><%= score %> pts</strong> - à faire avant le 14 mai 2018</p>
+      <p class="subtalent"><strong><%= "#{score} pts" unless score.size == 0 %></strong> <%= "- à faire avant le 14 mai 2018" unless score.size == 0 %></p>
     </div>
     <div class="capsule-badge" style="background-color: <%= color %>">
       <i class="<%= icon %>" aria-hidden="true"></i>

@@ -130,4 +130,5 @@ ActiveRecord::Schema.define(version: 20180325091340) do
   add_foreign_key "user_achievements", "users"
   add_foreign_key "user_missions", "missions"
   add_foreign_key "user_missions", "users"
+  add_foreign_key "users", "countries"
 end
