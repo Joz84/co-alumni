@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /en/ do
     root to: 'pages#home'
+
+  end
+
+  resources :missions, only: [:show] do
+    resources :user_missions, only: [:show, :create]
   end
 
   namespace :ambassador do
@@ -20,6 +25,6 @@ Rails.application.routes.draw do
   end
 
   namespace :leaderboard do
-    
+
   end
 end
