@@ -1,13 +1,1 @@
-<div class="double-padding-box dashboard">
-  <div class="container">
-    <div class="row">
-        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
-        <h2>Mise à jour d'une nouvelle mission</h2>
-          <%= render 'form', url: supervisor_mission_path(@mission)%>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+<%= render 'form', title: "Mise à jour de la mission" , url: supervisor_mission_path(@mission) %>
