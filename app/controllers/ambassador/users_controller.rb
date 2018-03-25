@@ -1,6 +1,6 @@
 module Ambassador
   class UsersController < ApplicationController
-    def show;
+    def show
       @user = User.find(params[:id])
       @missions_booked = @user.user_missions.includes(:mission).booked
       @missions_todo = Mission.all.first(5)

@@ -4,7 +4,12 @@
       <div class="col-12 col-md-4">
         <div class="row">
           <div class="col-12">
-            <%= render "shared/portrait", name: @user.first_name.capitalize + " " + @user.last_name.capitalize , statut: @user.role, photo: @user.photo_url, coordinator: @user.coordinator %>
+            <%= render "shared/portrait", content: {
+                                                    name: @user.full_name,
+                                                    statut: @user.role,
+                                                    photo: @user.photo_url,
+                                                    link: coordinator_dashboard_path(@user.coordinator),
+                                                    } %>
           </div>
           <div class="col-12">
             <div class="margin-bottom-medium">
@@ -34,12 +39,15 @@
           <p class="yellow margin-bottom-big">Aucune mission en cours actuellement.</p>
           <% end %>
           <% @missions_booked.each do |user_mission| %>
-            <%= render "shared/capsule", title: user_mission.mission.name, color: "#F15757",
-                                                              url: mission_path(user_mission.mission),
-                                                              method: :get,
-                                                              subtitle: "en cours",
-                                                              icon: "fas fa-spinner",
-                                                              score: user_mission.mission.score %>
+            <%= render "shared/capsule",  content: {
+                                                    title: user_mission.mission.name,
+                                                    color: "#F15757",
+                                                    url: mission_path(user_mission.mission),
+                                                    method: :get,
+                                                    subtitle: "en cours",
+                                                    icon: "fas fa-spinner",
+                                                    score: user_mission.mission.score,
+                                                    } %>
           <% end %>
 
 
@@ -49,12 +57,15 @@
           <p class="yellow margin-bottom-big">Aucune mission disponibles actuellement.</p>
           <% end %>
           <% @missions_todo.each do |mission| %>
-            <%= render "shared/capsule", title: mission.name, color: "#2A336A",
-                                                              url: mission_path(mission),
-                                                              method: :get,
-                                                              subtitle: "à faire avant 10 avril 2018",
-                                                              icon: "fas fa-plus",
-                                                              score: mission.score %>
+            <%= render "shared/capsule", content: {
+                                                    title: mission.name,
+                                                    color: "#2A336A",
+                                                    url: mission_path(mission),
+                                                    method: :get,
+                                                    subtitle: "à faire avant 10 avril 2018",
+                                                    icon: "fas fa-plus",
+                                                    score: mission.score
+                                                    } %>
           <% end %>
 
 
@@ -63,13 +74,14 @@
           <p class="yellow margin-bottom-big">Aucune mission réalisées pour l'instant.</p>
           <% end %>
           <% @missions_done.each do |user_mission| %>
-            <%= render "shared/capsule", title: user_mission.mission.name,
-                                         color: "#CE1F5B",
-                                         url: "",
-                                         method: :get,
-                                         subtitle: "terminée",
-                                         icon: "fas fa-check",
-                                         score: "" %>
+            <%= render "shared/capsule", content: {
+                                                    title: user_mission.mission.name,
+                                                    score: user_mission.mission.score,
+                                                    color: "#CE1F5B",
+                                                    method: :get,
+                                                    subtitle: "terminée",
+                                                    icon: "fas fa-check",
+                                                    } %>
           <% end %>
 
         </div>

@@ -1,0 +1,58 @@
+.button-round-wrapper {
+  color: $white;
+  text-align: center;
+  .button-round {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    margin: 10px auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+    color: $white;
+    // box-shadow: $shadow;
+    text-transform: uppercase;
+    text-align: left;
+    p {
+      margin-bottom: 0;
+    }
+    &.clickable {
+      -webkit-transition: 0.1s ease-in-out;
+          -moz-transition: 0.1s ease-in-out;
+          -o-transition: 0.1s ease-in-out;
+      &:hover {
+        transform: scale(0.9);
+        cursor: pointer;
+      }
+    }
+    .capsule-badge {
+      width: 45px;
+      height: 45px;
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 50%;
+      background-color: $blue;
+      font-size: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-position: center center;
+      background-size: cover;
+      -webkit-transition: 0.1s ease-in-out;
+          -moz-transition: 0.1s ease-in-out;
+          -o-transition: 0.1s ease-in-out;
+      &:hover {
+        background-color: $light-yellow;
+        transform: scale(1.3);
+      }
+      h2 {
+        margin: 0;
+      }
+      h6 {
+        font-size: 0.6rem;
+      }
+    }
+  }
+}

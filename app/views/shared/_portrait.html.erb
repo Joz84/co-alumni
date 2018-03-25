@@ -1,10 +1,10 @@
 <div class="portrait">
   <div>
-    <div class="photo" style="background-image:url('<%= photo %>');"></div>
-    <h4><%= name %></h4>
-    <h6 class="subtalent"><%= statut %></h6>
-    <%= link_to coordinator_dashboard_path(coordinator) do %>
-      <h6 class="subtalent water-green"><%= "coordinator : " + coordinator.first_name.capitalize + " " + coordinator.last_name.capitalize %></h6>
+    <div class="photo" style="background-image:url('<%= content[:photo] %>');"></div>
+    <h4><%= content[:name] %></h4>
+    <h6 class="subtalent"><%= content[:statut] %></h6>
+    <%= link_to content[:link] do %>
+      <h6 class="subtalent water-green"><%= "contacter manager" %></h6>
     <% end %>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import GMaps from 'gmaps/gmaps.js';
+import GMaps from 'gmaps';
 
 const styles = [
     {
@@ -176,7 +176,7 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   markers.forEach((marker) => {
     let svg = template.replace('{{ score }}', marker.score)
       .replace('{{ color }}', marker.color);
-    marker.icon = { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg), scaledSize: new google.maps.Size((marker.score / 100 * 3), (marker.score / 100 * 3)) };
+    marker.icon = { url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg), scaledSize: new google.maps.Size((marker.score / 2000 * 3), (marker.score / 2000 * 3)) };
   });
 
   map.addMarkers(markers);
