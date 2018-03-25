@@ -15,4 +15,9 @@ class UserMission < ApplicationRecord
     return unless creator.coordinator?
     creator.update(score: creator.score += ((points * 10) / 100))
   end
+
+
+  def self.same_mission_booked(mission)
+    self.where(mission: mission).booked
+  end
 end

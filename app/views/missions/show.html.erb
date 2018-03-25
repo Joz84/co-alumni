@@ -29,28 +29,30 @@
       </div>
       <div class="col-12 col-md-4">
         <h4>Mission en cours :</h4>
-        <% if current_user.user_missions.where(mission: @mission).nil? %>
-          <% current_user.user_missions.where(mission: @mission).each do |user_mission| %>
+        <% if @user_missions_booked.empty? %>
+          <p class="yellow">Aucune mission de ce type en cours.</p>
+        <% else %>
+          <% @user_missions_booked.each do |user_mission| %>
             <%= render "shared/capsule", content: { title: "Mission en cours",
                                                     color: "#7CBB9F",
-                                                    url: "TODO :set mission to done",
-                                                    method: "",
+                                                    url: mission_user_mission_path(@mission, user_mission),
+                                                    method: :patch,
                                                     subtitle: "à faire avant le 10 avril 2018",
                                                     icon: "fas fa-check",
                                                     score: @mission.score } %>
-          <% end %>
-        <% else %>
-          <p class="yellow">Aucune mission de ce type en cours.</p>
+            <% end %>
         <% end %>
         <h4>Commencer cette mission :</h4>
-        <%= render "shared/capsule", content: { title: "Ajouter cette mission",
+        <%= render "shared/capsule", content: { title: "Accepter cette mission",
                                                 color: "#2A336A",
                                                 url: mission_user_missions_path(@mission),
                                                 method: :post,
                                                 subtitle: "à faire avant le 10 avril 2018",
                                                 icon: "fas fa-plus",
                                                 score: @mission.score } %>
-        <%= render "shared/capsule", content: { title: "Annuler la mission",
+
+        <%# if mission booked %>
+        <%#= render "shared/capsule", content: { title: "Annuler la mission",
                                                 color: "#EE5F5B",
                                                 url: "destroy mission",
                                                 icon: "fas fa-minus" } %>
