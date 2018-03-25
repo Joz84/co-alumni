@@ -4,3 +4,30 @@
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
 ></div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <ul>
+        <% @missions.each do |mission| %>
+          <li><%= mission.name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <ul>
+        <% @best_coordinators.each do |coordinator| %>
+          <li><%= coordinator.full_name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <ul>
+        <% @best_ambassadors.each do |ambassador| %>
+          <li><%= ambassador.full_name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
