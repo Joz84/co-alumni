@@ -32,6 +32,7 @@ gem 'country_select'
 gem 'rest-client'
 gem 'paleta'
 gem 'cocoon'
+gem 'flag-icons-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

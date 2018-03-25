@@ -2,6 +2,9 @@ class UserMission < ApplicationRecord
   belongs_to :user
   belongs_to :mission
   delegate :creator, to: :mission
+  delegate :code, to: :user
+  delegate :name, to: :mission
+  delegate :score, to: :mission
 
   enum status: { booked: 0, done: 1, canceled: 2 }
 

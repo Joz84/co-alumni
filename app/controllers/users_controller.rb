@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:leaderboard, :svg]
 
   def leaderboard
-    @missions = Mission.limit(10)
+    @user_missions = UserMission.limit(10)
     @best_coordinators = User.best( role: :coordinator, number: 10 )
     @best_ambassadors =  User.best( role: :ambassador,  number: 10 )
 
