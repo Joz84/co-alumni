@@ -13,7 +13,7 @@
 
       <!-- Links when logged in -->
       <%= link_to "Tableau de Bord", leaderboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mon Profil", ambassador_dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mon Profil", user_dashboard(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Ressources", resources_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "🇬🇧", "#", class: "navbar-wagon-item navbar-wagon-link", id: "flag" %>
@@ -23,7 +23,7 @@
         <div class="dropdown">
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to user_dashboard(current_user) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>
               <% end %>
             </li>
