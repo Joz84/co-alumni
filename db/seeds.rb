@@ -13,6 +13,12 @@ puts "Destroy all"
   Resource.destroy_all
   Kind.destroy_all
   User.destroy_all
+  #Country.destroy_all
+
+
+# puts "Creating Country "
+#    c = ["blue", "yellow", "pink", "red", "brown", "green"]
+#    ISO3166::Country.all_translated.each { |country| Country.create(name: country, color: c.sample ) }
 
 puts "Creating Kinds"
   k = Kind.create!(name: "Produits")
@@ -25,13 +31,16 @@ puts "Creating Users"
   s1 = User.create!(email: "tdufour@gmail.com", password: "azerty", first_name: "Tom", last_name: "Dufour", role: 2, country: "France") #supervisor
   u = User.create!(email: "esass@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Sass", role: 1, country: "Etats-Unis") #coordinator
   u2 = User.create!(email: "mparent@gmail.com", password: "azerty", first_name: "Marcel", last_name: "Parent", role: 1, country: "Espagne") #coordinateur
+  index = 1
 
   user_call = RestClient.get('https://randomuser.me/api/?results=30&password=special,upper,lower,number&nat=us,dk,fr,es')
   parsed_user_call = JSON.parse(user_call, object_class: OpenStruct)
   user_data = parsed_user_call.results.each do |user|
-    ambassador = User.new(email: user.email, password: "123456", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:["France", "Etats-Unis", "Espagne"].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
+
+    ambassador = User.new(email: "riberac#{index}@gmail.com", password: "azerty", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:["France", "Etats-Unis", "Espagne"].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
     ambassador.remote_photo_url = user.picture["medium"]
     ambassador.save!
+    index += 1
   end
 
 puts "Creating Resources"
@@ -44,28 +53,24 @@ puts "Creating Resources"
   r4 = Resource.create!(name: "Miel", description: miel, supervisor: s, kind: k, remote_photo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Runny_hunny.jpg/1024px-Runny_hunny.jpg" )
   r5 = Resource.create!(name: "CHOCOLATERIE LA RUCHETTE", description: "Apiculteur, Basé dans le pays ribéracois", supervisor: s, kind: producteur, remote_photo_url: "http://www.chocolaterie-laruchette.com/images/vitrine.jpg" )
   r6 = Resource.create!(name: "Yolaine et Thierry", description: "Apiculteur, Basé dans le pays ribéracois", supervisor: s, kind: producteur, remote_photo_url: "http://www.yolainethierry.fr/images/IMG_1341b.jpg" )
+  r7 = Resource.create!(name: "Process de Fabrication du miel", description: "Vidéo explicative", supervisor: s, kind: producteur, video_url: "https://youtu.be/X3Ahiv2ZIL4?t=4" )
 
 puts "Creating Mission"
 
-  m = Mission.create!(name: "Présentation & Dégustation des produits", description: "Présentation via les fiches ressources des produits du pays Ribéracois, Dégustation en fin de présentation avec distribution des flyers des producteurs", score: 100, remote_photo_url:"https://cdt14.media.tourinsoft.eu/upload/NDT-illustration-2.jpg", creator: u )
-  m2 = Mission.create!(name: "Cours de Cuisine", description: "Réalisation avec un chef local et les produits ribéracois d'un cours de cuisine", score: 300, remote_photo_url:"https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/6554/SITours/cours-de-p-tisserie-et-de-desserts-fran-ais-l-atelier-des-chefs-in-paris-159191.jpg", creator: u )
-  m3 = Mission.create!(name: "Gestion des réseaux sociaux", description: "Communication sur les réseaux sociaux locaux des activités à venir, sur Gourming,...", score: 50, remote_photo_url:"https://sd-cdn.fr/wp-content/uploads/2018/01/reseaux-sociaux-770x515.jpg", creator: u2 )
+  m = Mission.create!(name: "Présentation & Dégustation des produits", description: "Présentation via les fiches ressources des produits du pays Ribéracois", score: 100, remote_photo_url:"https://cdt14.media.tourinsoft.eu/upload/NDT-illustration-2.jpg", creator: u, lastest_date: DateTime.new(2018,06,15) )
+  m2 = Mission.create!(name: "Cours de Cuisine", description: "Réalisation avec un chef local et les produits ribéracois d'un cours de cuisine", score: 300, remote_photo_url:"https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/6554/SITours/cours-de-p-tisserie-et-de-desserts-fran-ais-l-atelier-des-chefs-in-paris-159191.jpg", creator: u, lastest_date: DateTime.new(2018,03,26) )
+  m3 = Mission.create!(name: "Gestion des réseaux sociaux", description: "Communication sur les réseaux sociaux locaux des activités à venir, sur Gourming,...", score: 50, remote_photo_url:"https://sd-cdn.fr/wp-content/uploads/2018/01/reseaux-sociaux-770x515.jpg", creator: u2, lastest_date: DateTime.new(2018,12,31) )
 
 puts "Creating User_Mission"
   ambassadors = User.ambassador
-  UserMission.create!(user: ambassadors[0], mission: m, date: DateTime.new(2018,02,20)).done!
-  UserMission.create!(user: ambassadors[1], mission: m, date: DateTime.new(2018,03,24))
-  UserMission.create!(user: ambassadors[0], mission: m3, date: DateTime.new(2018,01,12)).done!
-  UserMission.create!(user: ambassadors[3], mission: m2, date: DateTime.new(2018,04,10))
-  UserMission.create!(user: ambassadors[2], mission: m2, date: DateTime.new(2018,03,22)).done!
-  UserMission.create!(user: ambassadors[4], mission: m2, date: DateTime.new(2018,03,22)).done!
-  UserMission.create!(user: ambassadors[5], mission: m2, date: DateTime.new(2018,05,20))
-  UserMission.create!(user: ambassadors[6], mission: m2, date: DateTime.new(2018,01,20)).done!
-  UserMission.create!(user: ambassadors[12], mission: m2, date: DateTime.new(2018,01,20)).done!
-  UserMission.create!(user: ambassadors[12], mission: m3, date: DateTime.new(2018,02,10)).done!
-  UserMission.create!(user: ambassadors[12], mission: m2, date: DateTime.new(2018,03,20)).done!
-  UserMission.create!(user: ambassadors[14], mission: m, date: DateTime.new(2018,05,26))
-  UserMission.create!(user: ambassadors[16], mission: m, date: DateTime.new(2018,04,20))
+  ambassadors.each do |user|
+    UserMission.create!(user: user, mission: [m, m2, m3].sample, date: DateTime.new(2018,02,20)).done!
+    UserMission.create!(user: user, mission: [m, m2, m3].sample)
+    UserMission.create!(user: user, mission: [m, m2, m3].sample, date: DateTime.new(2018,01,12)).done!
+    UserMission.create!(user: user, mission: [m, m2, m3].sample, date: DateTime.new(2018,02,05)).done!
+    UserMission.create!(user: user, mission: [m, m2, m3].sample, date: DateTime.new(2018,01,03)).done!
+    UserMission.create!(user: user, mission: [m, m2, m3].sample)
+  end
 
 puts "Creating Mission_Ressources"
   MissionResource.create!(mission: m, resource: r)
@@ -73,6 +78,7 @@ puts "Creating Mission_Ressources"
   MissionResource.create!(mission: m, resource: r2)
   MissionResource.create!(mission: m, resource: r4)
   MissionResource.create!(mission: m, resource: r5)
+  MissionResource.create!(mission: m, resource: r7)
   MissionResource.create!(mission: m2, resource: r)
   MissionResource.create!(mission: m2, resource: r3)
   MissionResource.create!(mission: m2, resource: r4)
