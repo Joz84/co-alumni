@@ -1,0 +1,29 @@
+<%= simple_form_for @mission, url: url do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, required: true, label: "Nom de ma mission" %>
+  <%= f.input :description, required: true, label: "Description de ma mission"%>
+  <%= f.input :remote_photo_url, label: "Url de la photo" %>
+  <%= f.input :lastest_date, label: "Date au plus tard pour réaliser la mission" %>
+  <%= f.input :score, required: true, label: "Score" %>
+  <%#= f.association :mission_resource, collection: :,prompt: "Selectionner une ressource", required: true %>
+  <% @mission.mission_resources.each do |mission_resource| %>
+    <%= f.fields_for :mission_resources, mission_resource do |t| %>
+      <p>
+        <%= t.association :resource, prompt: "Selectionner une ressource" %>
+        <%= t.check_box :_destroy %>
+        <%= t.label :_destroy, "Supprimer la ressource" %>
+      </p>
+    <% end %>
+  <% end %>
+  <div id="mission_resources">
+    <%= f.simple_fields_for :mission_resources, MissionResource.new do |mission_resource| %>
+      <!-- Task: <%#= task.text_field :name %> -->
+      <%= render 'shared/mission_resource_fields', f: mission_resource %>
+     <div class="links">
+        <%= link_to_add_association 'Ajouter une ressource', f, :mission_resources, partial: 'shared/mission_resource_fields' %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "Ajouter la mission" %>
+<% end %>

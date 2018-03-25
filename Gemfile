@@ -20,10 +20,18 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+
+gem 'jquery-rails'
+gem 'rails-i18n', '5.0.3'
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
+
 gem 'geocoder'
 gem "gmaps4rails"
 gem 'country_select'
 gem 'rest-client'
+gem 'paleta'
+gem 'cocoon'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

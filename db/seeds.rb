@@ -17,12 +17,19 @@ puts "Destroy all"
 
 
 puts "Creating Country "
-  c = ["blue", "yellow", "pink", "red", "brown", "green"]
-  # ISO3166::Country.all_translated.each { |country| Country.create(name: country, color: c.sample ) }
-  france = Country.create!(name: "France", color: c.sample)
-  spain = Country.create!(name: "Spain", color: c.sample)
-  canada = Country.create!(name: "Canada", color: c.sample)
+  # c = ["blue", "yellow", "pink", "red", "brown", "green"]
+  colors = Paleta::Palette.generate(:type => :random, :size => 250).map(&:hex)
+  ISO3166::Country.all_translated.each do |country|
+    Country.create(name: country, color: "#" + colors.sample )
+    print "🏁"
+  end
+  france = Country.find_by(name: "France")
+  spain = Country.find_by(name: "Spain")
+  canada = Country.find_by(name: "Canada")
+  colombie = Country.find_by(name: "Colombia")
+  chine = Country.find_by(name: "China")
 
+puts""
 puts "Creating Kinds"
   k = Kind.create!(name: "Produits")
   producteur = Kind.create!(name: "Producteurs")
@@ -30,23 +37,24 @@ puts "Creating Kinds"
   recette = Kind.create!(name: "Recettes")
 
 puts "Creating Users"
-  s = User.create!(email: "jdupont@gmail.com", password: "azerty", first_name: "John", last_name: "Dupont", role: 2, country: france) #supervisor
-  s1 = User.create!(email: "tdufour@gmail.com", password: "azerty", first_name: "Tom", last_name: "Dufour", role: 2, country: france) #supervisor
-  u = User.create!(email: "esass@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Sass", role: 1, country: canada) #coordinator
-  u2 = User.create!(email: "mparent@gmail.com", password: "azerty", first_name: "Marcel", last_name: "Parent", role: 1, country: spain) #coordinateur
+  s = User.create!(email: "jdupont@gmail.com", password: "azerty", first_name: "John", last_name: "Dupont", role: 2, country: france, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/Aquaj") #supervisor
+  s1 = User.create!(email: "tdufour@gmail.com", password: "azerty", first_name: "Tom", last_name: "Dufour", role: 2, country: france, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/louismathe") #supervisor
+  u = User.create!(email: "esass@gmail.com", password: "azerty", first_name: "Edouard", last_name: "Sass", role: 1, country: canada, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/sherpanat") #coordinator
+  u2 = User.create!(email: "mparent@gmail.com", password: "azerty", first_name: "Marcel", last_name: "Parent", role: 1, country: spain, remote_photo_url: "https://kitt.lewagon.com/placeholder/users/Mheaus") #coordinateur
   index = 1
 
   user_call = RestClient.get('https://randomuser.me/api/?results=30&password=special,upper,lower,number&nat=us,dk,fr,es')
   parsed_user_call = JSON.parse(user_call, object_class: OpenStruct)
   user_data = parsed_user_call.results.each do |user|
 
-    ambassador = User.new(email: "riberac#{index}@gmail.com", password: "azerty", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:[france, canada, spain].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
+    ambassador = User.new(email: "riberac#{index}@gmail.com", password: "azerty", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:[france, canada, spain, colombie, chine].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
     ambassador.remote_photo_url = user.picture["medium"]
     ambassador.save!
     print "👨‍"
     index += 1
   end
 
+puts""
 puts "Creating Resources"
   foie = "Le foie gras est un mets de fête populaire et bien connu dans la cuisine française. Il se consomme cru, mi-cuit ou cuit, et peut être proposé sous forme de produit frais ou en conserve, consommé seul ou en accompagnement d'autres plats comme une viande. Selon la loi française, le foie gras fait partie du patrimoine culturel et gastronomique protégé en France. On entend par foie gras, le foie d'un canard ou d'une oie spécialement engraissés par gavage."
   miel = "Le miel est une substance sucrée élaborée par les abeilles à miel à partir de nectar ou de miellat. Elles l'entreposent dans la ruche et s'en nourrissent tout au long de l'année, en particulier lors de périodes climatiques défavorables. Il est aussi consommé par d'autres espèces animales, dont l'espèce humaine qui organise sa production par l'élevage des abeilles à mie"

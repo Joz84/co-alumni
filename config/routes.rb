@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /en/ do
     root to: 'pages#home'
-
   end
 
   resources :missions, only: [:show] do
@@ -19,10 +18,12 @@ Rails.application.routes.draw do
 
   namespace :coordinator do
     resources :users, only: %I[show], path: :dashboard, as: :dashboard
+    resources :missions, only: [:new, :create, :edit, :update]
   end
 
   namespace :supervisor do
     resources :users, only: %I[show], path: :dashboard, as: :dashboard
+    resources :missions, only: [:new, :create, :edit, :update]
     resources :resources, only: %I[new create edit update destroy]
   end
 
