@@ -33,11 +33,12 @@
           <% if @missions_booked.length == 0 %>
           <p class="yellow margin-bottom-big">Aucune mission en cours actuellement.</p>
           <% end %>
-          <% @missions_booked.each do |mission| %>
-            <%= render "shared/capsule", title: mission.name, color: "#F15757",
-                                                              url: mission_path(mission),
+          <% @missions_booked.each do |user_mission| %>
+            <%= render "shared/capsule", title: user_mission.mission.name, color: "#F15757",
+                                                              url: mission_path(user_mission.mission),
                                                               subtitle: "en cours",
-                                                              icon: "fas fa-spinner" %>
+                                                              icon: "fas fa-spinner",
+                                                              score: user_mission.mission.score %>
           <% end %>
 
 
@@ -60,8 +61,8 @@
           <% if @missions_booked.length == 0 %>
           <p class="yellow margin-bottom-big">Aucune mission réalisées pour l'instant.</p>
           <% end %>
-          <% @missions_done.each do |mission| %>
-            <%= render "shared/capsule", title: mission.name, color: "#CE1F5B", url: "", subtitle: "terminée", icon: "fas fa-check" %>
+          <% @missions_done.each do |user_mission| %>
+            <%= render "shared/capsule", title: user_mission.mission.name, color: "#CE1F5B", url: "", subtitle: "terminée", icon: "fas fa-check", score: "" %>
           <% end %>
 
         </div>
