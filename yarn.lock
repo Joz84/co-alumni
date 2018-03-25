@@ -2857,6 +2857,10 @@ globule@^1.0.0:
     lodash "~4.17.4"
     minimatch "~3.0.2"
 
+gmap@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gmap/-/gmap-1.0.1.tgz#f29c2f5bd070546bc84368043d7f976f1b50a704"
+
 gmaps@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/gmaps/-/gmaps-0.4.24.tgz#07f22f0cfc3e4e32498950ffafd7ca635ffc100c"

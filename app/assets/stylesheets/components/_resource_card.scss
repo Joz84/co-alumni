@@ -1,0 +1,48 @@
+.resource-container {
+  min-height: 100vh;
+  display: grid;
+  padding: 50px;
+  background-color: $blue;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 50px repeat(2, 210px);
+  grid-gap: 20px;
+  &-title {
+    grid-column: span 4;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.resource-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  transition: all 0.25s ease;
+  overflow: hidden;
+  &:hover {
+    opacity: 0.8;
+  }
+  &-img {
+    height: 210px;
+    background-size: cover;
+    background-position: center;
+  }
+  &-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+  &-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
