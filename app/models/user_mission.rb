@@ -7,7 +7,6 @@ class UserMission < ApplicationRecord
 
   after_update :handle_points, if: ->(u) { u.saved_change_to_status? && u.done? }
 
-
   private
 
   def handle_points
