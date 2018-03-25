@@ -3,4 +3,7 @@
   background-size: cover;
   background-position: center center;
   height: calc(100vh - 70px);
+  svg {
+    height: 45px;
+  }
 }
