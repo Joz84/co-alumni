@@ -4,7 +4,12 @@
       <div class="col-12 col-md-4">
         <div class="row">
           <div class="col-12">
-            <%= render "shared/portrait", name: @user.first_name.capitalize + " " + @user.last_name.capitalize , statut: @user.role, photo: @user.photo_url, coordinator: @user.coordinator %>
+            <%= render "shared/portrait", content: {
+                                                    name: @user.full_name,
+                                                    statut: @user.role,
+                                                    photo: @user.photo_url,
+                                                    link: coordinator_dashboard_path(@user.coordinator),
+                                                    } %>
           </div>
           <div class="col-12">
             <div class="margin-bottom-medium">

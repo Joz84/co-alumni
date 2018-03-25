@@ -3,7 +3,7 @@
     <div class="photo" style="background-image:url('<%= content[:photo] %>');"></div>
     <h4><%= content[:name] %></h4>
     <h6 class="subtalent"><%= content[:statut] %></h6>
-    <%= link_to coordinator_dashboard_path(content[:manager]) do %>
+    <%= link_to content[:link] do %>
       <h6 class="subtalent water-green"><%= "contacter manager" %></h6>
     <% end %>
   </div>
