@@ -36,4 +36,6 @@ module ApplicationHelper
       ambassador_dashboard_path(user)
     end
   end
+
+
 end
