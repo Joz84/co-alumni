@@ -28,6 +28,7 @@ gem 'country_select'
 gem 'rest-client'
 gem 'paleta'
 gem 'cocoon'
+gem 'flag-icons-rails'
 gem 'rails-assets-smalot-bootstrap-datetimepicker', source: 'https://rails-assets.org'
 
 group :development do

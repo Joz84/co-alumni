@@ -19,8 +19,8 @@ puts "Destroy all"
 puts "Creating Country "
   # c = ["blue", "yellow", "pink", "red", "brown", "green"]
   colors = Paleta::Palette.generate(:type => :random, :size => 250).map(&:hex)
-  ISO3166::Country.all_translated.each do |country|
-    Country.create(name: country, color: "#" + colors.sample )
+  ISO3166::Country.all.each do |c|
+    Country.create!( name: c.name, color: "#" + colors.sample, code: c.alpha2 )
     print "🏁"
   end
   france = Country.find_by(name: "France")
