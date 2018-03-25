@@ -8,6 +8,27 @@
 <div class="double-padding-box dashboard">
   <div class="container">
     <div class="row">
+      <div class="col-md-5">
+        <%= render 'shared/capsule', content:     {
+          url: user_dashboard(current_user),
+          method: :get,
+          title: current_user.full_name,
+          score: current_user.score,
+          photo: current_user.photo_url
+        } %>
+      </div>
+      <div class="col-md-7 d-flex align-items-center justify-content-around">
+          <div>
+            <h2><b>Classement</b></h2>
+            <h1><b><%= current_user.str_rank %></b></h1>
+          </div>
+          <div>
+            <h2><b>Participation Pays</b></h2>
+            <h1><b><%= ( current_user.score * 100.0 / current_user.country.total_score ).to_i %>%</b></h1>
+          </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-4 text-center">
         <h6>LES DERNIÈRES<br>ACTIONS :</h6>
         <ul class="list-unstyled">

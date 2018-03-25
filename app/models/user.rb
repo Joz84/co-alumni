@@ -40,6 +40,19 @@ class User < ApplicationRecord
       .limit(attrs[:number])
   end
 
+  def rank
+    User.where(role: role)
+        .order(score: :desc)
+        .index(self)
+  end
+
+  def str_rank
+    users = User.where(role: role)
+      .order(score: :desc)
+    "#{users.index(self)}ème / #{users.size}"
+  end
+
+
   private
 
   def generate_token
