@@ -1,1 +1,10 @@
-<%= @resources %>
+<div class="resource-container">
+  <h1 class="resource-container-title">Liste des ressources</h1>
+  <% @resources.each do |resource| %>
+    <div class="resource-card">
+      <div class="resource-card-img" style="background-image: linear-gradient(transparent 75%, rgba(0,0,0,0.7)), url('<%= resource_photo(resource) %>');" alt="Card image cap"></div>
+      <h5 class="resource-card-title"><%= resource.name %></h5>
+      <%= link_to '', resource_path(resource), class: 'resource-card-link' %>
+    </div>
+  <% end %>
+</div>
