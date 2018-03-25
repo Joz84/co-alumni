@@ -27,5 +27,15 @@ module ApplicationHelper
     end
   end
 
+  def user_dashboard(user)
+    if user.supervisor?
+      supervisor_dashboard_path(user)
+    elsif user.coordinator?
+      coordinator_dashboard_path(user)
+    elsif user.ambassador?
+      ambassador_dashboard_path(user)
+    end
+  end
+
 
 end

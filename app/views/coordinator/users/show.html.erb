@@ -7,7 +7,7 @@
             <%= render "shared/portrait", content: {
                                           name: @user.full_name,
                                           statut: @user.role,
-                                          photo: @user.remote_photo_url,
+                                          photo: @user.photo_url,
                                           link: root_path,
                                           } %>
           </div>
@@ -70,11 +70,6 @@
                                                     score: ambassador.score,
                                                     } %>
           <% end %>
-
-
-
-
-
 
         </div>
       </div>
