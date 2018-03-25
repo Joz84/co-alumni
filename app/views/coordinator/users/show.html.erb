@@ -1,0 +1,91 @@
+<div class="double-padding-box dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="row">
+          <div class="col-12">
+            <%= render "shared/portrait", content: {
+                                          name: @user.full_name,
+                                          statut: @user.role,
+                                          photo: @user.remote_photo_url,
+                                          manager: "@user.supervisor"
+                                          } %>
+          </div>
+          <div class="col-12">
+            <div class="margin-bottom-medium">
+              <%= render "shared/skills", title: "score", text: @user.score, type: "pts", total: "", color:"#2A336A" %>
+              <%= render "shared/skills", title: "classement mondial", text: "48", type: "ème", total: "1300", color:"#CE1F5B" %>
+              <%= render "shared/skills", title: "classement national", text: "3", type: "ème", total: "35", color:"#7CBB9F" %>
+              <%= render "shared/skills", title: "succès", text: @user.own_achievements.length, type: "", total: "", color:"#E67E22" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="col-12">
+
+          <p class="white">Mission en cours :</p>
+          <% if @ambassador_missions.length == 0 %>
+          <p class="yellow margin-bottom-big">Aucune mission chez vos ambassadeurs.</p>
+          <% end %>
+          <% @ambassador_missions.each do |us| %>
+            <%= render "shared/capsule", content: {
+                                                    title: us.mission.name,
+                                                    score: us.mission.score,
+                                                    method: :get,
+                                                    subtitle: "terminée",
+                                                    photo: us.user.photo_url
+                                                    } %>
+          <% end %>
+
+          <p class="white">Mission créées :</p>
+          <% if @missions_todo.length == 0 %>
+          <p class="yellow margin-bottom-big">Aucune mission disponibles actuellement.</p>
+          <% end %>
+          <% @missions_todo.each do |mission| %>
+            <%= render "shared/capsule", content: {
+                                                    title: mission.name,
+                                                    color: "#7CBB9F",
+                                                    url: mission_path(mission),
+                                                    method: :get,
+                                                    subtitle: "à faire avant 10 avril 2018",
+                                                    icon: "fas fa-check",
+                                                    score: mission.score
+                                                    } %>
+          <% end %>
+
+          <p class="white">Ambassadeur :</p>
+          <% if @ambassadors == 0 %>
+          <p class="yellow margin-bottom-big">Aucune ambassadeur.</p>
+          <% end %>
+          <% @ambassadors.each do |ambassador| %>
+            <%= render "shared/capsule",  content: {
+                                                    title: ambassador.full_name,
+                                                    color: "#F15757",
+                                                    url: ambassador_dashboard_path(ambassador),
+                                                    method: :get,
+                                                    photo: ambassador.photo_url,
+                                                    subtitle: "en mission",
+                                                    score: ambassador.score,
+                                                    } %>
+          <% end %>
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="col-md-2">
+        <%= render "shared/button_round", content: { link: "",
+                                                     icon: "fa fa-plus",
+                                                     btn_link: new_coordinator_mission_path,
+                                                     method: :get,
+                                                     color: "",
+                                                     text: "Créer une mission"} %>
+      </div>
+    </div>
+  </div>
+</div>

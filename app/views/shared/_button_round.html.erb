@@ -1,3 +1,10 @@
-<% link_to btn_link, class: "capsule-badge bring-front fixed", style: "background-color:"+color do %>
-  <i class="fa fa-<%= icon %>" aria-hidden="true"></i>
+<%= link_to content[:btn_link], method: content[:method] do %>
+<div class="button-round-wrapper">
+  <div class="button-round clickable">
+      <div class="capsule-badge", style="background-color: #{content[:color]}">
+        <i class="<%= content[:icon] %>"></i>
+      </div>
+  </div>
+  <p><%= content[:text] %></p>
+</div>
 <% end %>
