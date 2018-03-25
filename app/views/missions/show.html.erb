@@ -1,0 +1,34 @@
+<div class="double-padding-box dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="row">
+          <div class="col-12">
+            <%= @mission.name %>
+          </div>
+          <div class="col-12">
+            <%= @mission.description %>
+          </div>
+        </div>
+
+          <% @mission.resources.each do |resource| %>
+            <%= resource.name  %>
+            <%= resource.kind.name %>
+            <%= resource.description %>
+            <%= image_tag(resource.photo_url) %>
+          <% end %>
+
+
+       <!--  liens vers User Mission -->
+
+       <%# if current_user.user_missions.nil? %>
+
+       <%# end %>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
