@@ -38,6 +38,9 @@ h1, h2, h3, h4, h5, h6, p, i, a, span {
   &.green {
     color: $green;
   }
+  &.water-green {
+    color: $water-green;
+  }
 }
 h1, h2{
   font-family: $headers-font;

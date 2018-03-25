@@ -36,6 +36,7 @@ puts "Creating Users"
   user_call = RestClient.get('https://randomuser.me/api/?results=30&password=special,upper,lower,number&nat=us,dk,fr,es')
   parsed_user_call = JSON.parse(user_call, object_class: OpenStruct)
   user_data = parsed_user_call.results.each do |user|
+
     ambassador = User.new(email: "riberac#{index}@gmail.com", password: "azerty", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:["France", "Etats-Unis", "Espagne"].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
     ambassador.remote_photo_url = user.picture["medium"]
     ambassador.save!
