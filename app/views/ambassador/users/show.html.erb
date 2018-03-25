@@ -4,14 +4,14 @@
       <div class="col-12 col-md-4">
         <div class="row">
           <div class="col-12">
-            <%= render "shared/portrait", name: "Maxime Boué", statut: "Ambassadeur", photo: "http://res.cloudinary.com/doodlid/image/upload/v1520417897/pjocsx3jx3yis6ikr6or.jpg" %>
+            <%= render "shared/portrait", name: @user.first_name + " " + @user.last_name , statut: @user.role, photo: @user.photo_url, coordinator: @user.coordinator %>
           </div>
           <div class="col-12">
             <div class="margin-bottom-medium">
               <%= render "shared/skills", title: "classement mondial", text: "48", type: "ème", total: "1300", color:"#CE1F5B" %>
               <%= render "shared/skills", title: "classement national", text: "3", type: "ème", total: "35", color:"#7CBB9F" %>
-              <%= render "shared/skills", title: "score", text: "3245", type: "pts", total: "", color:"#2A336A" %>
-              <%= render "shared/skills", title: "succès", text: "22", type: "", total: "", color:"#E67E22" %>
+              <%= render "shared/skills", title: "score", text: @user.score, type: "pts", total: "", color:"#2A336A" %>
+              <%= render "shared/skills", title: "succès", text: @user.own_achievements.length, type: "", total: "", color:"#E67E22" %>
             </div>
           </div>
         </div>
@@ -29,9 +29,12 @@
         </div>
         <div class="col-12">
           <p class="white">Mission en cours :</p>
-
-          <%= render "shared/capsule", title: "Présentation et dégustation des produits", color: "#F15757", url: "", subtitle: "en cours", icon: "fas fa-spinner" %>
-
+          <% if @missions_live.length == 0 %>
+          <p class="yellow margin-bottom-big">Aucune mission en cours actuellement.</p>
+          <% end %>
+          <% @missions_live.each do |mission| %>
+            <%= render "shared/capsule", title: mission.name, color: "#F15757", url: "", subtitle: "en cours", icon: "fas fa-spinner" %>
+          <% end %>
           <p class="white">Mission disponibles :</p>
           <%= render "shared/capsule", title: "Organiser un cours de cuisine", color: "#2A336A", url: "", subtitle: "à faire avant 10 avril 2018", icon: "fas fa-bullhorn" %>
           <p class="white">Mission réalisées :</p>

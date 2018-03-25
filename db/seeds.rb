@@ -29,7 +29,7 @@ puts "Creating Users"
   user_call = RestClient.get('https://randomuser.me/api/?results=30&password=special,upper,lower,number&nat=us,dk,fr,es')
   parsed_user_call = JSON.parse(user_call, object_class: OpenStruct)
   user_data = parsed_user_call.results.each do |user|
-    ambassador = User.new(email: user.email, password: user.login["password"], first_name: user.name["first"], last_name: user.name["last"], role: 0, country:["France", "Etats-Unis", "Espagne"].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
+    ambassador = User.new(email: user.email, password: "123456", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:["France", "Etats-Unis", "Espagne"].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
     ambassador.remote_photo_url = user.picture["medium"]
     ambassador.save!
   end
@@ -47,9 +47,9 @@ puts "Creating Resources"
 
 puts "Creating Mission"
 
-  m = Mission.create!(name: "Présentation & Dégustation des produits", description: "Présentation via les fiches ressources des produits du pays Ribéracois, Dégustation en fin de présentation avec distribution des flyers des producteurs", score: 100, remote_photo_url:"https://cdt14.media.tourinsoft.eu/upload/NDT-illustration-2.jpg", coordinator: u )
-  m2 = Mission.create!(name: "Cours de Cuisine", description: "Réalisation avec un chef local et les produits ribéracois d'un cours de cuisine", score: 300, remote_photo_url:"https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/6554/SITours/cours-de-p-tisserie-et-de-desserts-fran-ais-l-atelier-des-chefs-in-paris-159191.jpg", coordinator: u )
-  m3 = Mission.create!(name: "Gestion des réseaux sociaux", description: "Communication sur les réseaux sociaux locaux des activités à venir, sur Gourming,...", score: 50, remote_photo_url:"https://sd-cdn.fr/wp-content/uploads/2018/01/reseaux-sociaux-770x515.jpg", coordinator: u2 )
+  m = Mission.create!(name: "Présentation & Dégustation des produits", description: "Présentation via les fiches ressources des produits du pays Ribéracois, Dégustation en fin de présentation avec distribution des flyers des producteurs", score: 100, remote_photo_url:"https://cdt14.media.tourinsoft.eu/upload/NDT-illustration-2.jpg", creator: u )
+  m2 = Mission.create!(name: "Cours de Cuisine", description: "Réalisation avec un chef local et les produits ribéracois d'un cours de cuisine", score: 300, remote_photo_url:"https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/6554/SITours/cours-de-p-tisserie-et-de-desserts-fran-ais-l-atelier-des-chefs-in-paris-159191.jpg", creator: u )
+  m3 = Mission.create!(name: "Gestion des réseaux sociaux", description: "Communication sur les réseaux sociaux locaux des activités à venir, sur Gourming,...", score: 50, remote_photo_url:"https://sd-cdn.fr/wp-content/uploads/2018/01/reseaux-sociaux-770x515.jpg", creator: u2 )
 
 puts "Creating User_Mission"
   ambassadors = User.ambassador
