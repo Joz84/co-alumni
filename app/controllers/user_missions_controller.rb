@@ -1,4 +1,4 @@
-class MissionsController < ApplicationController
+class UserMissionsController < ApplicationController
   # def create
   #   @user_mission = UserMission.new
 
