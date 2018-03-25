@@ -1,8 +1,14 @@
-<%= simple_form_for [:supervisor, resource] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.association :kind %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+<div class="double-padding-box dashboard" style="background-image: url('http://res.cloudinary.com/doodlid/image/upload/c_scale,w_1200/v1522021320/co-alumni/photo-1520066975094-c321ec00637d.jpg')">
+  <div class="form-box">
+    <h2>Créer une ressource : </h2>
+
+      <%= simple_form_for [:supervisor, resource] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.association :kind %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.input :photo, as: :file %>
+        <%= f.button :submit, value:"Ajouter la ressource",  class: 'btn btn-blue center' %>
+      <% end %>
+  </div>
+</div>
