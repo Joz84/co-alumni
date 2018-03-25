@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :missions, only: [:show] do
+  resources :missions, only: [:show, :new, :create] do
     resources :user_missions, only: [:show, :create]
   end
 

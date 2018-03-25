@@ -28,6 +28,7 @@ gem 'geocoder'
 gem "gmaps4rails"
 gem 'country_select'
 gem 'rest-client'
+gem 'paleta'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

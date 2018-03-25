@@ -8,4 +8,17 @@ class MissionsController < ApplicationController
     #   @user_mission = current_user.user_missions.find_by(mission_id: params[:id])
     # end
   end
+
+  def new
+    @mission = Mission.new
+  end
+
+  def create
+  end
+
+  private
+
+  def mission_params
+    params.require(:mission).permit(:name)
+  end
 end
