@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324172900) do
-
+ActiveRecord::Schema.define(version: 20180325091340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.integer "required"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "description"
+    t.string "badge"
+    t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -101,12 +111,11 @@ ActiveRecord::Schema.define(version: 20180324172900) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role"
-    t.integer "score"
+    t.integer "score", default: 0
     t.bigint "country_id"
     t.string "token"
     t.integer "coordinator_id"
-    t.float "latitude"
-    t.float "longitude"
+    t.string "photo"
     t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -121,5 +130,4 @@ ActiveRecord::Schema.define(version: 20180324172900) do
   add_foreign_key "user_achievements", "users"
   add_foreign_key "user_missions", "missions"
   add_foreign_key "user_missions", "users"
-  add_foreign_key "users", "countries"
 end

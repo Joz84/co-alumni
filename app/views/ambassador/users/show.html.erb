@@ -4,13 +4,13 @@
       <div class="col-12 col-md-4">
         <div class="row">
           <div class="col-12">
-            <%= render "shared/portrait", name: @user.first_name + " " + @user.last_name , statut: @user.role, photo: @user.photo_url, coordinator: @user.coordinator %>
+            <%= render "shared/portrait", name: @user.first_name.capitalize + " " + @user.last_name.capitalize , statut: @user.role, photo: @user.photo_url, coordinator: @user.coordinator %>
           </div>
           <div class="col-12">
             <div class="margin-bottom-medium">
+              <%= render "shared/skills", title: "score", text: @user.score, type: "pts", total: "", color:"#2A336A" %>
               <%= render "shared/skills", title: "classement mondial", text: "48", type: "ème", total: "1300", color:"#CE1F5B" %>
               <%= render "shared/skills", title: "classement national", text: "3", type: "ème", total: "35", color:"#7CBB9F" %>
-              <%= render "shared/skills", title: "score", text: @user.score, type: "pts", total: "", color:"#2A336A" %>
               <%= render "shared/skills", title: "succès", text: @user.own_achievements.length, type: "", total: "", color:"#E67E22" %>
             </div>
           </div>
@@ -20,25 +20,49 @@
       <div class="col-12 col-md-6">
         <div class="col-12">
           <div class="margin-bottom-medium">
-            <%= render "shared/badge", icon: "fab fa-angrycreative", color: "#7CBB9F" %>
-            <%= render "shared/badge", icon: "fab fa-avianex", color: "#CE1F5B" %>
-            <%= render "shared/badge", icon: "fas fa-birthday-cake", color: "#2A336A" %>
-            <%= render "shared/badge", icon: "fas fa-chess-knight", color: "#E67E22" %>
-            <%= render "shared/badge", icon: "far fa-gem", color: "#7CBB9F" %>
+            <%= render "shared/badge", url: "", icon: "fab fa-angrycreative", color: "#7CBB9F" %>
+            <%= render "shared/badge", url: "", icon: "fab fa-avianex", color: "#CE1F5B" %>
+            <%= render "shared/badge", url: "", icon: "fas fa-birthday-cake", color: "#2A336A" %>
+            <%= render "shared/badge", url: "", icon: "fas fa-chess-knight", color: "#E67E22" %>
+            <%= render "shared/badge", url: "", icon: "far fa-gem", color: "#7CBB9F" %>
           </div>
         </div>
         <div class="col-12">
+
           <p class="white">Mission en cours :</p>
-          <% if @missions_live.length == 0 %>
+          <% if @missions_booked.length == 0 %>
           <p class="yellow margin-bottom-big">Aucune mission en cours actuellement.</p>
           <% end %>
-          <% @missions_live.each do |mission| %>
-            <%= render "shared/capsule", title: mission.name, color: "#F15757", url: "", subtitle: "en cours", icon: "fas fa-spinner" %>
+          <% @missions_booked.each do |mission| %>
+            <%= render "shared/capsule", title: mission.name, color: "#F15757",
+                                                              url: mission_path(mission),
+                                                              subtitle: "en cours",
+                                                              icon: "fas fa-spinner" %>
           <% end %>
+
+
+
           <p class="white">Mission disponibles :</p>
-          <%= render "shared/capsule", title: "Organiser un cours de cuisine", color: "#2A336A", url: "", subtitle: "à faire avant 10 avril 2018", icon: "fas fa-bullhorn" %>
+          <% if @missions_todo.length == 0 %>
+          <p class="yellow margin-bottom-big">Aucune mission disponibles actuellement.</p>
+          <% end %>
+          <% @missions_todo.each do |mission| %>
+            <%= render "shared/capsule", title: mission.name, color: "#2A336A",
+                                                              url: mission_path(mission),
+                                                              subtitle: "à faire avant 10 avril 2018",
+                                                              icon: "fas fa-plus",
+                                                              score: mission.score %>
+          <% end %>
+
+
           <p class="white">Mission réalisées :</p>
-          <%= render "shared/capsule", title: "Faire venir 150 personnes", color: "#CE1F5B", url: "", subtitle: "groupe facebook amis du ribéracois", icon: "fas fa-check" %>
+          <% if @missions_booked.length == 0 %>
+          <p class="yellow margin-bottom-big">Aucune mission réalisées pour l'instant.</p>
+          <% end %>
+          <% @missions_done.each do |mission| %>
+            <%= render "shared/capsule", title: mission.name, color: "#CE1F5B", url: "", subtitle: "terminée", icon: "fas fa-check" %>
+          <% end %>
+
         </div>
       </div>
       <div class="col-md-2">
@@ -50,5 +74,3 @@
     </div>
   </div>
 </div>
-
-

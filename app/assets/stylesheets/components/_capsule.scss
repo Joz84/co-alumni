@@ -69,10 +69,26 @@
   bottom: 14px;
   border-radius: 50%;
   color:white;
-  font-size: 50px;
+  font-size: 31px;
   display: flex;
   justify-content: center;
   align-items: center;
+  h2 {
+    margin: 0;
+  }
+  h6 {
+    font-size: 0.6rem;
+  }
+  .capsule-inner-deco {
+    border: 2px dotted $light-blue;
+    opacity: 0.2;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
 }
 .capsule-badge-link {
   width: 30px;
