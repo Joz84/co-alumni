@@ -1,4 +1,4 @@
-<% if url.length > 5 %><a href="<%= url %>"><% end %>
+<%# link_to url %>
   <div class="capsule <%= "clickable" if url.size > 5 %>">
     <div class="capsule-text">
       <p class="talent"><%= title %></p>
@@ -8,4 +8,4 @@
       <i class="<%= icon %>" aria-hidden="true"></i>
     </div>
   </div>
-</a>
+<%# end %>
