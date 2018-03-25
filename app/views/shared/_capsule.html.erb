@@ -1,11 +1,11 @@
-<%= link_to url, method: method do %>
-  <div class="capsule <%= "clickable" if url.size > 5 %>">
+<%= link_to content[:url], method: content[:method] do %>
+  <div class="capsule <%= "clickable" if content[:url].to_s.size > 5 %>">
     <div class="capsule-text">
-      <p class="talent"><%= title %></p>
-      <p class="subtalent"><strong><%= "#{score} pts" unless score.size == 0 %></strong> <%= "- à faire avant le 14 mai 2018" unless score.size == 0 %></p>
+      <p class="talent"><%= content[:title] %></p>
+      <p class="subtalent"><strong><%= "#{content[:score]} pts" unless content[:score].to_s.size == 0 %></strong> <%= "- à faire avant le 14 mai 2018" if content[:color].to_s.size == 0 %></p>
     </div>
-    <div class="capsule-badge" style="background-color: <%= color %>">
-      <i class="<%= icon %>" aria-hidden="true"></i>
+    <div class="capsule-badge" style="background-color: <%= content[:color] %>; background-image: url(<%= content[:photo].to_s %>);">
+      <i class="<%= content[:icon] %>" aria-hidden="true"></i>
     </div>
   </div>
 <% end %>
