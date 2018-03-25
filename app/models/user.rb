@@ -1,19 +1,10 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-
-  # has_many :resources #, inverse_of: :supervisor
-  # has_many :missions
-  # has_many :user_missions
-  # has_many :my_missions, through: :user_missions
-  belongs_to :country
-
   mount_uploader :photo, PhotoUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :resources, dependent: :destroy #, inverse_of: :supervisor
+  has_many :resources, dependent: :destroy
   has_many :user_missions, dependent: :destroy
   has_many :missions, dependent: :destroy
   has_many :own_missions, through: :user_missions, source: :mission
@@ -24,10 +15,15 @@ class User < ApplicationRecord
 
   belongs_to :coordinator, class_name: 'User', foreign_key: :coordinator_id, optional: true
 
+  belongs_to :country
+
   before_create :generate_token
+
+  after_create :add_amb_points
+
   after_update :check_achievements, if: :saved_change_to_score?
 
-  validates :first_name, :last_name, :email, :country, presence: true
+  validates :first_name, :last_name, :email, :country, :role, presence: true
   validates :coordinator, presence: true, if: :ambassador?
 
   enum role: { ambassador: 0, coordinator: 1, supervisor: 2 }
@@ -36,8 +32,10 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.upcase}"
   end
 
-  def own_missions_by(status)
-    own_missions.where(status: status)
+  def self.best(attrs)
+    where(role: attrs[:role])
+      .order(score: :desc)
+      .limit(attrs[:number])
   end
 
   private
@@ -49,16 +47,15 @@ class User < ApplicationRecord
     end
   end
 
-  def self.best(attrs)
-    where( role: attrs[:role] )
-    .order(score: :desc)
-    .limit( attrs[:number] )
-  end
-
   def check_achievements
     Achievement.all.where('required <= ?', score).find_each do |achievement|
       next if own_achievements.include?(achievement)
       UserAchievement.create(achievement: achievement, user: self)
     end
+  end
+
+  def add_amb_points
+    return unless ambassador?
+    coordinator.update(score: coordinator.score += 300)
   end
 end
