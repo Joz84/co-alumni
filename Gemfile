@@ -21,7 +21,12 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
-
+gem 'rails-i18n', '5.0.3'
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
+gem 'geocoder'
+gem "gmaps4rails"
+gem 'country_select'
 gem 'rest-client'
 
 group :development do

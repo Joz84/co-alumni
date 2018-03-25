@@ -2,7 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  has_many :resources #, inverse_of: :supervisor
+  has_many :missions
+  has_many :user_missions
+  has_many :my_missions, through: :user_missions
+  belongs_to :country
+
   mount_uploader :photo, PhotoUploader
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -41,6 +48,12 @@ class User < ApplicationRecord
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless User.exists?(token: random_token)
     end
+  end
+
+  def self.best(attrs)
+    where( role: attrs[:role] )
+    .order(score: :desc)
+    .limit( attrs[:number] )
   end
 
   def check_achievements

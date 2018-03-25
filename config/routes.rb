@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/leaderboard', to: 'users#leaderboard', as: "svg"
   get '/contact', to: 'pages#contact'
 
   devise_for :users
