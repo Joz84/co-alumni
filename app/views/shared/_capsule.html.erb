@@ -2,10 +2,16 @@
   <div class="capsule <%= "clickable" if content[:url].to_s.size > 5 %>">
     <div class="capsule-text">
       <p class="talent"><%= content[:title] %></p>
-      <p class="subtalent"><strong><%= "#{content[:score]} pts" unless content[:score].to_s.size == 0 %></strong> <%= "- à faire avant le 14 mai 2018" if content[:color].to_s.size == 0 %></p>
+      <p class="subtalent"><strong><%= "#{content[:score]} pts" unless content[:score].to_s.size == 0 %></strong></p>
     </div>
-    <div class="capsule-badge" style="background-color: <%= content[:color] %>; background-image: url(<%= content[:photo].to_s %>);">
-      <i class="<%= content[:icon] %>" aria-hidden="true"></i>
-    </div>
+    <% if content[:country_code].present? %>
+      <div class="flag-icon flag-icon-<%= content[:country_code].downcase %> capsule-badge">
+      </div>
+    <% else %>
+      <div class="capsule-badge" style="background-color: <%= content[:color] %>; background-image: url(<%= content[:photo].to_s %>);">
+        <i class="<%= content[:icon] %>" aria-hidden="true"></i>
+      </div>
+    <% end %>
+
   </div>
 <% end %>

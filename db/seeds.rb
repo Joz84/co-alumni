@@ -19,8 +19,8 @@ puts "Destroy all"
 puts "Creating Country "
   # c = ["blue", "yellow", "pink", "red", "brown", "green"]
   colors = Paleta::Palette.generate(:type => :random, :size => 250).map(&:hex)
-  ISO3166::Country.all_translated.each do |country|
-    Country.create(name: country, color: "#" + colors.sample )
+  ISO3166::Country.all.each do |c|
+    Country.create!( name: c.name, color: "#" + colors.sample, code: c.alpha2 )
     print "🏁"
   end
   france = Country.find_by(name: "France")
@@ -64,8 +64,8 @@ puts "Creating Resources"
   r3 = Resource.create!(name: "Foie Gras et magret en buisson ardent", description: "Sur le pourtour de l’assiette individuelle, placer la salade préalablement assaisonnée, poser une tranche de pain toasté au centre, y déposer une ou 2 tranches de Foie Gras.Agrémenter avec des petites brochettes sur lesquelles on aura alterné les tranches de magret avec les boules de melon, les pointes d’asperges, les grains de raisin et les fruits rouges.Parsemer de poivre mignonnette et saupoudrer très délicatement de piment d’Espelette.", supervisor: s, kind: recette, remote_photo_url: "http://lefoiegras.fr/uploads/recipe_picture_2015_11_19_17_51_39_483654-325x400.jpg" )
   r4 = Resource.create!(name: "Miel", description: miel, supervisor: s, kind: k, remote_photo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Runny_hunny.jpg/1024px-Runny_hunny.jpg" )
   r5 = Resource.create!(name: "Chocolaterie La Ruchette", description: "Apiculteur, Basé dans le pays ribéracois", supervisor: s, kind: producteur, remote_photo_url: "http://www.chocolaterie-laruchette.com/images/vitrine.jpg" )
-  r6 = Resource.create!(name: "Yolaine et Thierry", description: "Apiculteur, Basé dans le pays ribéracois. Apicultrice à Grand-Brassac depuis 1997, Yolaine Thierry a commencé sa production d'hydromel dès que ses abeilles besogneuses ont fourni suffisamment de miel.", supervisor: s, kind: producteur, remote_photo_url: "http://www.yolainethierry.fr/images/IMG_1341b.jpg" )
-  r7 = Resource.create!(name: "Process de Fabrication du miel", description: "Vidéo explicative", supervisor: s, kind: producteur, video_url: "https://youtu.be/X3Ahiv2ZIL4?t=4" )
+  r6 = Resource.create!(name: "Yolaine et Thierry", description: "Apiculteur, Basé dans le pays ribéracois", supervisor: s, kind: producteur, remote_photo_url: "http://www.yolainethierry.fr/images/IMG_1341b.jpg" )
+  r7 = Resource.create!(name: "Process de Fabrication du miel", description: "Vidéo explicative", supervisor: s, kind: producteur, video_url: "https://www.youtube.com/embed/X3Ahiv2ZIL4?start=238" )
 
 puts "Creating Mission"
 

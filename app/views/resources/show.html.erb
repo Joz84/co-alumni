@@ -1,1 +1,40 @@
-<%= @resource %>
+<div class="double-padding-box dashboard ressources">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="row">
+          <div class="col-12">
+            <div class="ressource-description">
+              <h1><%= @resource.name %></h1>
+              <%= @resource.description %>
+              <div class="bar-separator"></div>
+              <% if @resource.photo.present? %>
+                <img src="<%= @resource.photo.url %>" alt="">
+              <% else %>
+                <iframe width="650" height="366" src="<%= @resource.video_url %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-12">
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <h4>Missions disponnibles :</h4>
+        <ul class="list-unstyled">
+          <%= @resource.missions.find_each do |mission| %>
+            <li>
+              <%= render 'shared/capsule', content:     {
+                url: mission_path(mission),
+                method: :get,
+                title: mission.name,
+                score: mission.score,
+                country_code: mission.creator.country.code
+              } %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

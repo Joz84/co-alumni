@@ -26,6 +26,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, :country, :role, presence: true
   validates :coordinator, presence: true, if: :ambassador?
 
+  delegate :code, to: :country
+
   enum role: { ambassador: 0, coordinator: 1, supervisor: 2 }
 
   def full_name
@@ -37,6 +39,19 @@ class User < ApplicationRecord
       .order(score: :desc)
       .limit(attrs[:number])
   end
+
+  def rank
+    User.where(role: role)
+        .order(score: :desc)
+        .index(self)
+  end
+
+  def str_rank
+    users = User.where(role: role)
+      .order(score: :desc)
+    "#{users.index(self)}ème / #{users.size}"
+  end
+
 
   private
 
