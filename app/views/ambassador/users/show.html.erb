@@ -30,7 +30,7 @@
               <%= render "shared/badge", url: "", icon: achievement.badge, color: "#7CBB9F" %>
             <% end %>
             <% ( Achievement.all - current_user.own_achievements ).each do |achievement| %>
-              <%= render "shared/badge", url: "", icon: achievement.badge, color: "#EE5F5B" %>
+              <%= render "shared/badge", url: "", icon: achievement.badge, color: "#2A336A" %>
             <% end %>
           </div>
         </div>
@@ -79,7 +79,7 @@
             <%= render "shared/capsule", content: {
                                                     title: user_mission.mission.name,
                                                     score: user_mission.mission.score,
-                                                    color: "#CE1F5B",
+                                                    color: "#7CBB9F",
                                                     method: :get,
                                                     subtitle: "terminée",
                                                     icon: "fas fa-check",

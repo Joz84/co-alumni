@@ -17,6 +17,7 @@
                   </div>
                   <div class="col-4">
                     <%= image_tag(resource.photo_url) unless resource.photo_url.nil? %>
+                    <%= image_tag(resource_photo(resource)) unless resource.video_url.nil? %>
                   </div>
                 </div>
                 <div class="bar-separator-inner"></div>
