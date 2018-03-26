@@ -43,13 +43,13 @@ class User < ApplicationRecord
   def rank
     User.where(role: role)
         .order(score: :desc)
-        .index(self)
+        .index(self) + 1
   end
 
   def str_rank
     users = User.where(role: role)
       .order(score: :desc)
-    "#{users.index(self)}ème / #{users.size}"
+    "#{ users.index(self) + 1 } / #{ users.size }"
   end
 
 
