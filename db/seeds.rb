@@ -45,7 +45,7 @@ puts "Creating Users"
   user_call = RestClient.get('https://randomuser.me/api/?results=30&password=special,upper,lower,number&nat=us,dk,fr,es')
   parsed_user_call = JSON.parse(user_call, object_class: OpenStruct)
   user_data = parsed_user_call.results.each do |user|
-    ambassador = User.new(email: "riberac#{index}@gmail.com", password: "azerty", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:[france, canada, spain, colombie, chine].sample, coordinator: [u, u2].sample, score: (1..10000).to_a.sample) #ambassadeur
+    ambassador = User.new(email: "riberac#{index}@gmail.com", password: "azerty", first_name: user.name["first"], last_name: user.name["last"], role: 0, country:[france, canada, spain, colombie, chine].sample, coordinator: [u, u2, u3, u4, u5, u6, u7, u8].sample, score: (1..10000).to_a.sample) #ambassadeur
     ambassador.remote_photo_url = user.picture["medium"]
     ambassador.save!
     print "👨‍"
@@ -98,9 +98,9 @@ end
 
 puts "Creating Achievement"
   Achievement.create!(name:"Master Creative" , badge: "fab fa-angrycreative", description: "Cet ambassadeur a su développé le réseau via des initiatives créatives et ludiques", user: s, required: 100 )
-  Achievement.create!(name:"Navigateur Extreme" , badge: "fab fa-avianex", description: "Cet ambassadeur a su parcourir sa région pour développer son réseau", user: s, required: 50 )
-  Achievement.create!(name:"Cuisine Addict" , badge: "fas fa-birthday-cake", description: "Cet ambassadeur a su réalisé de nombreux cours de cuisine", user: s, required: 300 )
-  Achievement.create!(name:"Organisateur Ultime" , badge: "fas fa-chess-knight", description: "Cet ambassadeur a organisé plus de 3 événements en 3 mois", user: s1, required: 400 )
-  Achievement.create!(name:"Alumni Ruby" , badge: "far fa-gem", description: "Cet ambassadeur a organisé plus de 10 événements et représente un élément clé du réseau", user: s1, required: 500 )
+  Achievement.create!(name:"Navigateur Extreme" , badge: "fab fa-avianex", description: "Cet ambassadeur a su parcourir sa région pour développer son réseau", user: s, required: 750 )
+  Achievement.create!(name:"Cuisine Addict" , badge: "fas fa-birthday-cake", description: "Cet ambassadeur a su réalisé de nombreux cours de cuisine", user: s, required: 1500 )
+  Achievement.create!(name:"Organisateur Ultime" , badge: "fas fa-chess-knight", description: "Cet ambassadeur a organisé plus de 3 événements en 3 mois", user: s1, required: 5000 )
+  Achievement.create!(name:"Alumni Ruby" , badge: "far fa-gem", description: "Cet ambassadeur a organisé plus de 10 événements et représente un élément clé du réseau", user: s1, required: 10000 )
 
 puts "Finished"
