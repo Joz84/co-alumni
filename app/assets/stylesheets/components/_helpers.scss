@@ -39,7 +39,7 @@ $input-height: 56px;
   @extend %full-width;
   @extend %full-height;
   &.under-navbar {
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
   }
   &.under-navbar-slim {
     height: calc(100vh - 45px);
