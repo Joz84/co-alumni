@@ -9,13 +9,14 @@ module Supervisor
 
     def create
       return render :new unless @resource.save
+      flash[:notice] = 'Ressource créée avec succés'
       redirect_to resource_path(@resource)
     end
 
     def edit; end
 
     def update
-      return render :edit unless @ressource.update(resource_params)
+      return render :edit unless @resource.update(resource_params)
       redirect_to resource_path(@resource)
     end
 
