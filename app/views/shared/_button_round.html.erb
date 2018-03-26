@@ -1,7 +1,7 @@
 <%= link_to content[:btn_link], method: content[:method] do %>
 <div class="button-round-wrapper">
   <div class="button-round clickable">
-      <div class="capsule-badge", style="background-color: #{content[:color]}">
+      <div class="capsule-badge", style="background-color: <%= content[:color] %>">
         <i class="<%= content[:icon] %>"></i>
       </div>
   </div>
