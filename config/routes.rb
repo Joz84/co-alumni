@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :missions, only: [:show] do
-    resources :user_missions, only: [:show, :create]
+    resources :user_missions, only: [:show, :create, :update]
   end
 
   namespace :ambassador do
