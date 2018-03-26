@@ -1,45 +1,22 @@
 class UserMissionsController < ApplicationController
-  # def create
-  #   @user_mission = UserMission.new
 
-  #   if current_user.user_missions.find_by(mission: @mission).nil?
-  #     @user_mission = UserMission.new
+  def create
+    @mission = Mission.find(params[:mission_id])
+    @user_mission = @mission.user_missions.new(user:  current_user)
+    if @user_mission.save
+      flash[:notice] = 'Mission acceptée avec succés'
+      redirect_to @mission
+    else
+      render 'missions/show'
+    end
+  end
 
+  def update
+    @user_mission = UserMission.find(params[:id])
+    @user_mission.done!
+    @user_mission.date = DateTime.now
+    flash[:notice] = 'Mission accomplie avec succés'
+    redirect_to mission_path(@user_mission.mission)
+  end
 
-  #   else
-  #     @user_mission = current_user.user_missions.find_by(mission_id: params[:id])
-  #   end
-  # end
-
-
-  # def create
-  #   @participant = @seating_plan.participants.new(participant_params)
-
-  #   @recent_participants = @seating_plan.participants.where(pulse: true)
-  #   @recent_participants.each { |participant| participant.update(pulse: false) }
-  #   @participant.pulse = true if @participant.present?
-
-  #   @relationship = Relationship.new
-
-
-
-  #   if @participant.save
-  #     @participant.allocate_seat
-  #     redirect_to seating_plan_tables_path(@seating_plan)
-  #     flash[:notice] = "Successfully added your guest : #{@participant.first_name.capitalize} #{@participant.last_name.capitalize}"
-  #   else
-  #     render 'tables/index'
-  #   end
-  # end
-
-  # private
-
-  # def participant_params
-  #   params.require(:user_mission).permit(
-  #     :first_name,
-  #     :last_name,
-  #     :age_range,
-  #     :family_type,
-  #   )
-  # end
 end
