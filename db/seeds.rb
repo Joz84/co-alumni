@@ -10,7 +10,7 @@ puts "Destroy all"
 
 
 puts "Creating Country "
-  colors = %(#7CBB9F #DFB444 #2A336A #CE1F5B)
+  colors = %w(#7CBB9F #DFB444 #2A336A #CE1F5B)
   ISO3166::Country.all.each do |c|
     Country.create!( name: c.name, color: "#" + colors.sample, code: c.alpha2 )
     print "🏁"
