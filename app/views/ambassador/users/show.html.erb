@@ -24,12 +24,14 @@
 
       <div class="col-12 col-md-6">
         <div class="col-12">
+          <p class="white">Badges :</p>
           <div class="margin-bottom-medium">
-            <%= render "shared/badge", url: "", icon: "fab fa-angrycreative", color: "#7CBB9F" %>
-            <%= render "shared/badge", url: "", icon: "fab fa-avianex", color: "#CE1F5B" %>
-            <%= render "shared/badge", url: "", icon: "fas fa-birthday-cake", color: "#2A336A" %>
-            <%= render "shared/badge", url: "", icon: "fas fa-chess-knight", color: "#E67E22" %>
-            <%= render "shared/badge", url: "", icon: "far fa-gem", color: "#7CBB9F" %>
+            <% current_user.own_achievements.each do |achievement| %>
+              <%= render "shared/badge", url: "", icon: achievement.badge, color: "#7CBB9F" %>
+            <% end %>
+            <% ( Achievement.all - current_user.own_achievements ).each do |achievement| %>
+              <%= render "shared/badge", url: "", icon: achievement.badge, color: "#EE5F5B" %>
+            <% end %>
           </div>
         </div>
         <div class="col-12">

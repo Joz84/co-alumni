@@ -16,7 +16,10 @@
       <%= link_to "Mon Profil", user_dashboard(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Ressources", resources_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "🇬🇧", "#", class: "navbar-wagon-item navbar-wagon-link", id: "flag" %>
+      <%= link_to "", class: "navbar-wagon-item navbar-wagon-link", id: "flag" do %>
+        <div class="flag-icon flag-icon-gb">
+        </div>
+      <% end %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
