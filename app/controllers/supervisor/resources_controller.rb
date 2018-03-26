@@ -45,7 +45,7 @@ module Supervisor
 
     def resource_params
       params.require(:resource)
-            .permit(:name, :description, :user_id, :kind, :photo)
+            .permit(:name, :description, :user_id, :kind_id, :photo)
     end
   end
 end
